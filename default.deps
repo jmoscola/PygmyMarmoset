@@ -1,34 +1,34 @@
-http://central.maven.org/maven2/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar
+https://repo.maven.apache.org/maven2/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar
   Jetty9/lib/servlet-api-3.1.jar
-http://central.maven.org/maven2/org/eclipse/jetty/jetty-server/9.4.3.v20170317/jetty-server-9.4.3.v20170317.jar
+https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-server/9.4.3.v20170317/jetty-server-9.4.3.v20170317.jar
   Jetty9/lib/jetty-server-9.4.3.v20170317.jar
-http://central.maven.org/maven2/org/eclipse/jetty/jetty-jmx/9.4.3.v20170317/jetty-jmx-9.4.3.v20170317.jar
+https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-jmx/9.4.3.v20170317/jetty-jmx-9.4.3.v20170317.jar
   Jetty9/lib/jetty-jmx-9.4.3.v20170317.jar
-http://central.maven.org/maven2/org/eclipse/jetty/jetty-util/9.4.3.v20170317/jetty-util-9.4.3.v20170317.jar
+https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-util/9.4.3.v20170317/jetty-util-9.4.3.v20170317.jar
   Jetty9/lib/jetty-util-9.4.3.v20170317.jar
-http://central.maven.org/maven2/org/eclipse/jetty/jetty-webapp/9.4.3.v20170317/jetty-webapp-9.4.3.v20170317.jar
+https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-webapp/9.4.3.v20170317/jetty-webapp-9.4.3.v20170317.jar
   Jetty9/lib/jetty-webapp-9.4.3.v20170317.jar
-http://central.maven.org/maven2/org/eclipse/jetty/jetty-servlet/9.4.3.v20170317/jetty-servlet-9.4.3.v20170317.jar
+https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlet/9.4.3.v20170317/jetty-servlet-9.4.3.v20170317.jar
   Jetty9/lib/jetty-servlet-9.4.3.v20170317.jar
-http://central.maven.org/maven2/org/eclipse/jetty/jetty-http/9.4.3.v20170317/jetty-http-9.4.3.v20170317.jar
+https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-http/9.4.3.v20170317/jetty-http-9.4.3.v20170317.jar
   Jetty9/lib/jetty-http-9.4.3.v20170317.jar
-http://central.maven.org/maven2/org/eclipse/jetty/jetty-io/9.4.3.v20170317/jetty-io-9.4.3.v20170317.jar
+https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-io/9.4.3.v20170317/jetty-io-9.4.3.v20170317.jar
   Jetty9/lib/jetty-io-9.4.3.v20170317.jar
-http://central.maven.org/maven2/org/eclipse/jetty/jetty-security/9.4.3.v20170317/jetty-security-9.4.3.v20170317.jar
+https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-security/9.4.3.v20170317/jetty-security-9.4.3.v20170317.jar
   Jetty9/lib/jetty-security-9.4.3.v20170317.jar
-http://central.maven.org/maven2/org/eclipse/jetty/jetty-annotations/9.4.3.v20170317/jetty-annotations-9.4.3.v20170317.jar
+https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-annotations/9.4.3.v20170317/jetty-annotations-9.4.3.v20170317.jar
   Jetty9/lib/jetty-annotations-9.4.3.v20170317.jar
-http://central.maven.org/maven2/org/eclipse/jetty/jetty-xml/9.4.3.v20170317/jetty-xml-9.4.3.v20170317.jar
+https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-xml/9.4.3.v20170317/jetty-xml-9.4.3.v20170317.jar
   Jetty9/lib/jetty-xml-9.4.3.v20170317.jar
-http://central.maven.org/maven2/org/eclipse/jetty/jetty-plus/9.4.3.v20170317/jetty-plus-9.4.3.v20170317.jar
+https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-plus/9.4.3.v20170317/jetty-plus-9.4.3.v20170317.jar
   Jetty9/lib/jetty-plus-9.4.3.v20170317.jar
-http://central.maven.org/maven2/org/eclipse/jetty/toolchain/jetty-schemas/3.1/jetty-schemas-3.1.jar
+https://repo.maven.apache.org/maven2/org/eclipse/jetty/toolchain/jetty-schemas/3.1/jetty-schemas-3.1.jar
   Jetty9/lib/jetty-schemas-3.1.jar
-http://central.maven.org/maven2/javax/annotation/javax.annotation-api/1.2/javax.annotation-api-1.2.jar
+https://repo.maven.apache.org/maven2/javax/annotation/javax.annotation-api/1.2/javax.annotation-api-1.2.jar
   Jetty9/lib/annotations/javax.annotation-api-1.2.jar
-http://central.maven.org/maven2/org/ow2/asm/asm/5.1/asm-5.1.jar
+https://repo.maven.apache.org/maven2/org/ow2/asm/asm/5.1/asm-5.1.jar
   Jetty9/lib/annotations/asm-5.1.jar
-http://central.maven.org/maven2/org/ow2/asm/asm-commons/5.1/asm-commons-5.1.jar
+https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/5.1/asm-commons-5.1.jar
   Jetty9/lib/annotations/asm-commons-5.1.jar
 
 # I couldn't find the following in Maven, so I uploaded them to
@@ -49,50 +49,50 @@ https://s3.amazonaws.com/pygmymarmoset/org.apache.taglibs.taglibs-standard-spec-
 https://downloads.mariadb.com/Connectors/java/connector-java-1.5.7/mariadb-java-client-1.5.7.jar
   PygmyMarmosetWebapp/war/WEB-INF/lib/mariadb-java-client-1.5.7.jar
 
-http://central.maven.org/maven2/log4j/log4j/1.2.16/log4j-1.2.16.jar
+https://repo.maven.apache.org/maven2/log4j/log4j/1.2.16/log4j-1.2.16.jar
   PygmyMarmosetLogging/lib/log4j-1.2.16.jar
   PygmyMarmosetWebapp/war/WEB-INF/lib/log4j-1.2.16.jar
 
-http://central.maven.org/maven2/commons-logging/commons-logging/1.2/commons-logging-1.2.jar
+https://repo.maven.apache.org/maven2/commons-logging/commons-logging/1.2/commons-logging-1.2.jar
   PygmyMarmosetLogging/lib/commons-logging-1.2.jar
   PygmyMarmosetWebapp/war/WEB-INF/lib/commons-logging-1.2.jar
 
 slf4j_version=1.6.4
-http://repo1.maven.org/maven2/org/slf4j/slf4j-api/${slf4j_version}/slf4j-api-${slf4j_version}.jar
+https://repo1.maven.org/maven2/org/slf4j/slf4j-api/${slf4j_version}/slf4j-api-${slf4j_version}.jar
   PygmyMarmosetLogging/lib/slf4j-api-${slf4j_version}.jar
   PygmyMarmosetWebapp/war/WEB-INF/lib/slf4j-api-${slf4j_version}.jar
-http://repo2.maven.org/maven2/org/slf4j/slf4j-log4j12/${slf4j_version}/slf4j-log4j12-${slf4j_version}.jar
+https://repo2.maven.org/maven2/org/slf4j/slf4j-log4j12/${slf4j_version}/slf4j-log4j12-${slf4j_version}.jar
   PygmyMarmosetLogging/lib/slf4j-log4j12-${slf4j_version}.jar
   PygmyMarmosetWebapp/war/WEB-INF/lib/slf4j-log4j12-${slf4j_version}.jar
 
-http://central.maven.org/maven2/org/apache/commons/commons-lang3/3.5/commons-lang3-3.5.jar
+https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.5/commons-lang3-3.5.jar
   PygmyMarmosetWebapp/war/WEB-INF/lib/commons-lang3-3.5.jar
   PygmyMarmosetLauncher/lib/commons-lang3-3.5.jar
-http://central.maven.org/maven2/commons-beanutils/commons-beanutils/1.9.3/commons-beanutils-1.9.3.jar
+https://repo.maven.apache.org/maven2/commons-beanutils/commons-beanutils/1.9.3/commons-beanutils-1.9.3.jar
   PygmyMarmosetWebapp/war/WEB-INF/lib/commons-beanutils-1.9.3.jar
-http://central.maven.org/maven2/commons-io/commons-io/2.5/commons-io-2.5.jar
+https://repo.maven.apache.org/maven2/commons-io/commons-io/2.5/commons-io-2.5.jar
   PygmyMarmosetWebapp/war/WEB-INF/lib/commons-io-2.5.jar
   PygmyMarmosetLauncher/lib/commons-io-2.5.jar
 
-http://central.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.8.7/jackson-annotations-2.8.7.jar
+https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.8.7/jackson-annotations-2.8.7.jar
   PygmyMarmosetWebapp/war/WEB-INF/lib/jackson-annotations-2.8.7.jar
-http://central.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.8.7/jackson-databind-2.8.7.jar
+https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.8.7/jackson-databind-2.8.7.jar
   PygmyMarmosetWebapp/war/WEB-INF/lib/jackson-databind-2.8.7.jar
-http://central.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.8.7/jackson-core-2.8.7.jar
+https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.8.7/jackson-core-2.8.7.jar
   PygmyMarmosetWebapp/war/WEB-INF/lib/jackson-core-2.8.7.jar
 
-http://central.maven.org/maven2/org/reflections/reflections/0.9.11/reflections-0.9.11.jar
+https://repo.maven.apache.org/maven2/org/reflections/reflections/0.9.11/reflections-0.9.11.jar
   PygmyMarmosetWebapp/war/WEB-INF/lib/reflections-0.9.11.jar
 
-http://central.maven.org/maven2/com/google/guava/guava/21.0/guava-21.0.jar
+https://repo.maven.apache.org/maven2/com/google/guava/guava/21.0/guava-21.0.jar
   PygmyMarmosetWebapp/war/WEB-INF/lib/guava-21.0.jar
 
-http://central.maven.org/maven2/javassist/javassist/3.12.1.GA/javassist-3.12.1.GA.jar
+https://repo.maven.apache.org/maven2/javassist/javassist/3.12.1.GA/javassist-3.12.1.GA.jar
   PygmyMarmosetWebapp/war/WEB-INF/lib/javassist-3.12.1.GA.jar
 
 daemon_version=0.8
 https://s3.amazonaws.com/org.cloudcoder.daemon.binaries/daemon-${daemon_version}.jar
   PygmyMarmosetLauncher/lib/daemon-${daemon_version}.jar
 
-http://central.maven.org/maven2/org/apache/commons/commons-csv/1.4/commons-csv-1.4.jar
+https://repo.maven.apache.org/maven2/org/apache/commons/commons-csv/1.4/commons-csv-1.4.jar
   PygmyMarmosetWebapp/war/WEB-INF/lib/commons-csv-1.4.jar
