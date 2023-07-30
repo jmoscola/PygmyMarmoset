@@ -13,8 +13,8 @@ import java.io.Reader;
 import java.nio.charset.Charset;
 import java.util.Properties;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 /**
  * Configuration properties object.
@@ -26,7 +26,7 @@ public class PMConfig {
 	public static final String DB_PASSWD = "pm.db.passwd";
 	public static final String DB_NAME = "pm.db.name";
 	
-	private static final Logger logger = LoggerFactory.getLogger(PMConfig.class);
+//	private static final Logger logger = LoggerFactory.getLogger(PMConfig.class);
 	
 	private static final PMConfig instance = new PMConfig();
 	static {
@@ -36,7 +36,7 @@ public class PMConfig {
 			// to specify the location of the config properties file
 			// within the uberjar.
 			if (!loadPropertiesFromResource("war/WEB-INF/classes/pygmymarmoset.properties")) {
-				logger.error("Could not find pygmymarmoset.properties");
+				//logger.error("Could not find pygmymarmoset.properties");
 			}
 		}
 	}
@@ -45,7 +45,7 @@ public class PMConfig {
 		InputStream in =
 				PMConfig.class.getClassLoader().getResourceAsStream(resName);
 		if (in == null) {
-			logger.warn("Resource {} doesn't exist", resName);
+			//logger.warn("Resource {} doesn't exist", resName);
 			return false;
 		} else {
 			InputStreamReader reader = new InputStreamReader(in, Charset.forName("UTF-8"));
@@ -53,7 +53,7 @@ public class PMConfig {
 				instance.load(reader);
 				return true;
 			} catch (IOException e) {
-				logger.error("Error reading pygmymarmoset.properties", e);
+				//logger.error("Error reading pygmymarmoset.properties", e);
 				return false;
 			}
 		}

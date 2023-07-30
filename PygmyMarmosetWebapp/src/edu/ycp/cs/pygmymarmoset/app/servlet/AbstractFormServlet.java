@@ -12,13 +12,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import edu.ycp.cs.pygmymarmoset.app.model.PygmyMarmosetException;
 
 public abstract class AbstractFormServlet extends AbstractServlet {
-	private static final Logger logger = LoggerFactory.getLogger(AbstractFormServlet.class);
+//	private static final Logger logger = LoggerFactory.getLogger(AbstractFormServlet.class);
 	
 	public enum LogicOutcome {
 		STAY_ON_PAGE,
@@ -47,7 +47,7 @@ public abstract class AbstractFormServlet extends AbstractServlet {
 			params.unmarshal(); // read data from form into model object(s)
 			outcome = doLogic(params, req, resp);
 		} catch (PygmyMarmosetException e) {
-			logger.error("Error executing form logic", e);
+			//logger.error("Error executing form logic", e);
 			req.setAttribute("errmsg", e.getErrorMessage());
 		}
 		if (outcome == LogicOutcome.STAY_ON_PAGE) {

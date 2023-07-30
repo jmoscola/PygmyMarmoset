@@ -11,8 +11,8 @@ import java.io.InputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import edu.ycp.cs.pygmymarmoset.app.model.IReadBlob;
 import edu.ycp.cs.pygmymarmoset.app.model.Submission;
@@ -55,15 +55,15 @@ public class GetSubmissionEntryController {
 					// Let the entry reader read the entry data
 					entryReader.readBlob(zin, entryName);
 				} else {
-					logger.error("Entry {} in submission {} not found", entryIndex, submission.getId());
+					//logger.error("Entry {} in submission {} not found", entryIndex, submission.getId());
 				}
 			} catch (IOException e) {
-				logger.error("Error reading entry {} in submission {}", entryIndex, submission.getId());
+				//logger.error("Error reading entry {} in submission {}", entryIndex, submission.getId());
 			}
 		}
 	}
 
-	private static final Logger logger = LoggerFactory.getLogger(GetSubmissionEntryController.class);
+	//private static final Logger logger = LoggerFactory.getLogger(GetSubmissionEntryController.class);
 	
 	public boolean execute(Submission submission, int entryIndex, IReadBlob entryReader) {
 		if (entryIndex > 0) {

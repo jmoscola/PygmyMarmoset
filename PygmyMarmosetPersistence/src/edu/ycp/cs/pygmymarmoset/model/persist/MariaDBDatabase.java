@@ -12,8 +12,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import edu.ycp.cs.pygmymarmoset.app.model.Course;
 import edu.ycp.cs.pygmymarmoset.app.model.GetSubmissionsMode;
@@ -71,7 +71,7 @@ public class MariaDBDatabase implements IDatabase {
 		}
 	}
 	
-	private static Logger logger = LoggerFactory.getLogger(MariaDBDatabase.class);
+//	private static Logger logger = LoggerFactory.getLogger(MariaDBDatabase.class);
 	
 	public static String JDBC_URL;
 	static {
@@ -276,7 +276,7 @@ public class MariaDBDatabase implements IDatabase {
 				return result;
 			} catch (SQLException e) {
 				if (isDeadlock(e)) {
-					logger.warn("Deadlock detected, retrying transaction " + txn.getName(), e);
+					//logger.warn("Deadlock detected, retrying transaction " + txn.getName(), e);
 					attempts++;
 				} else if (e.getSQLState() != null && e.getSQLState().equals("23000")) {
 					throw new PersistenceException("Integrity constraint violation (duplicate field value detected)");
