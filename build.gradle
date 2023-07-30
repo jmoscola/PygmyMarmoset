@@ -65,7 +65,8 @@ task copyConfigProperties(type: Copy) {
 	include 'pygmymarmoset.properties'
 	
 	// make sure there actually was a configuration properties file to copy
-	inputs.sourceFiles.stopExecutionIfEmpty()
+	if (inputs.sourceFiles.empty)
+		throw new StopExecutionException("No pygmymarmoset.properties found")
 }
 
 // Copy the non-class and non-jar files in the webapp's WEB-INF

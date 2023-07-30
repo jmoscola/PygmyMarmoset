@@ -9,11 +9,11 @@ allprojects {
 
 sourceSets {
 	main {
-		output.classesDir = 'bin'
-		output.resourcesDir = 'bin'
 		java {
 			srcDir 'src'
+			outputDir = file('bin')
 		}
+		output.resourcesDir = file('bin')
 	}
 }
 

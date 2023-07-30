@@ -9,11 +9,11 @@ allprojects {
 
 sourceSets {
 	main {
-		output.classesDir = 'war/WEB-INF/classes'
-		output.resourcesDir = 'war/WEB-INF/classes'
 		java {
 			srcDir 'src'
+			outputDir = file('war/WEB-INF/classes')
 		}
+		output.resourcesDir = 'war/WEB-INF/classes'
 	}
 }
 
