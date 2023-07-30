@@ -11,7 +11,7 @@ sourceSets {
 	main {
 		java {
 			srcDir 'src'
-			outputDir = file('war/WEB-INF/classes')
+			destinationDirectory.set(file('war/WEB-INF/classes'))
 		}
 		output.resourcesDir = 'war/WEB-INF/classes'
 	}

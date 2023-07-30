@@ -11,7 +11,8 @@ sourceSets {
 	main {
 		java {
 			srcDir 'src'
-			outputDir = file('bin')
+			destinationDirectory.set(file('bin'))
+			
 		}
 		output.resourcesDir = file('bin')
 	}
