@@ -53,7 +53,7 @@ public class BeanUtil {
 
 	public static<E> E newInstance(Class<E> modelCls) {
 		try {
-			return modelCls.newInstance();
+			return modelCls.getDeclaredConstructor().newInstance();
 		} catch (Exception e) {
 			throw new IllegalArgumentException("Could not create new instance of " + modelCls.getSimpleName());
 		}

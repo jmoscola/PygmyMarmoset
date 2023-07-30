@@ -17,8 +17,8 @@ task uberJar(
 	manifest {
 		attributes 'Main-Class' : 'edu.ycp.cs.pygmymarmoset.main.UberjarMain'
 	}
-        destinationDirectory = layout.buildDirectory.dir('.')
-	baseName = 'pygmyMarmosetApp'
+    destinationDirectory = layout.buildDirectory.dir('.')
+	archiveBaseName = 'pygmyMarmosetApp'
 	from 'build/uberJarStaging'
 }
 
@@ -101,6 +101,7 @@ task copyLauncherFiles(type: Copy, dependsOn: [':PygmyMarmosetLauncher:compileJa
 
 // Copy all of the contents of the Jetty jarfiles into the uberjar staging area.
 task copyJettyDeps(type: Copy) {
+	duplicatesStrategy = 'INCLUDE'
 	from requiredJars(project(':PygmyMarmosetLauncher')).collect { zipTree(it) }
 	into 'build/uberJarStaging'
 	exclude 'META-INF/**'

@@ -18,9 +18,9 @@ sourceSets {
 }
 
 jar {
-	duplicatesStrategy= DuplicatesStrategy.EXCLUDE
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 dependencies {
-	compile files(eclipseClasspath(project))
+	implementation files(eclipseClasspath(project))
 }
