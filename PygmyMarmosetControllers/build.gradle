@@ -10,9 +10,8 @@ allprojects {
 sourceSets {
 	main {
 		java {
-			srcDir 'src'
+			srcDirs = ['src']
 			destinationDirectory.set(file('bin'))
-			
 		}
 		output.resourcesDir = file('bin')
 	}
@@ -23,5 +22,11 @@ jar {
 }
 
 dependencies {
+	implementation project(path: ':PygmyMarmosetModelClasses')
+	implementation project(path: ':PygmyMarmosetPersistence')
 	implementation files(eclipseClasspath(project))
+}
+
+clean {
+	delete 'bin'
 }

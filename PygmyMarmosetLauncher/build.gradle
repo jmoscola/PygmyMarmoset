@@ -10,7 +10,7 @@ allprojects {
 sourceSets {
 	main {
 		java {
-			srcDir 'src'
+			srcDirs = ['src']
 			destinationDirectory.set(file('bin'))
 		}
 		output.resourcesDir = file('bin')
@@ -19,4 +19,8 @@ sourceSets {
 
 dependencies {
 	implementation files(eclipseClasspath(project))
+}
+
+clean {
+	delete 'bin'
 }

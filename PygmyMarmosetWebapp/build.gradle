@@ -10,7 +10,7 @@ allprojects {
 sourceSets {
 	main {
 		java {
-			srcDir 'src'
+			srcDirs = ['src']
 			destinationDirectory.set(file('war/WEB-INF/classes'))
 		}
 		output.resourcesDir = 'war/WEB-INF/classes'
@@ -18,5 +18,12 @@ sourceSets {
 }
 
 dependencies {
+	implementation project(path: ':PygmyMarmosetModelClasses')
+	implementation project(path: ':PygmyMarmosetPersistence')
+	implementation project(path: ':PygmyMarmosetControllers')
 	implementation files(eclipseClasspath(project))
+}
+
+clean {
+	delete 'war/WEB-INF/classes'
 }

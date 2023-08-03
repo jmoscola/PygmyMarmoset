@@ -10,7 +10,7 @@ allprojects {
 sourceSets {
 	main {
 		java {
-			srcDir 'src'
+			srcDirs = ['src']
 			destinationDirectory.set(file('bin'))
 		}
 		output.resourcesDir = file('bin')
@@ -18,10 +18,15 @@ sourceSets {
 }
 
 jar {
-	duplicatesStrategy=  DuplicatesStrategy.EXCLUDE
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 	exclude 'pygmymarmoset.properties'
 }
 
 dependencies {
+	implementation project(path: ':PygmyMarmosetModelClasses')
 	implementation files(eclipseClasspath(project))
+}
+
+clean {
+	delete 'bin'
 }

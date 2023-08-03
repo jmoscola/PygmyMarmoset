@@ -41,17 +41,24 @@ task buildPersistenceJar(dependsOn: [':buildModelClassesJar', ':PygmyMarmosetPer
 	mustRunAfter ':buildModelClassesJar'
 }
 
+//tasks.register(':PygmyMarmosetPersistence:compileJava') {
+//	inputFiles.setFrom(tasks.named(':PygmyMarmosetModelClasses:processResources'))
+//}
+
 task buildControllersJar(dependsOn: [':buildPersistenceJar', ':PygmyMarmosetControllers:jar']) {
 	// controllers jar can't be built until persistence jar is built
 	mustRunAfter ':buildPersistenceJar'
 }
+
+
+
 
 // Copy jars of projects depended on by the webapp into the uberjar
 // staging area.
 task copyWebappProjectJars(
 	type: Copy,
 	dependsOn: [
-		':buildControllersJar' // ensures model classes and persistence jars are build, too
+		':buildControllersJar' // ensures model classes and persistence jars are built too
 	]) {
 	from 'PygmyMarmosetModelClasses/build/libs', 'PygmyMarmosetPersistence/build/libs',
 					'PygmyMarmosetControllers/build/libs'
