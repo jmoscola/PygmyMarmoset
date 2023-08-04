@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import edu.ycp.cs.pygmymarmoset.app.model.Project;
 import edu.ycp.cs.pygmymarmoset.app.model.introspect.DBField;
@@ -24,7 +24,7 @@ import edu.ycp.cs.pygmymarmoset.app.model.introspect.Introspect;
 import edu.ycp.cs.pygmymarmoset.app.util.BeanUtil;
 
 public class Params {
-//	private static Logger logger = LoggerFactory.getLogger(Params.class);
+	private static Logger logger = LoggerFactory.getLogger(Params.class);
 
 	private HttpServletRequest req;
 	private Map<String, Object> modelObjects;
@@ -135,7 +135,7 @@ public class Params {
 						}
 					}
 				} catch (Exception e) {
-					//logger.warn("Exception unmarshaling parameter " + paramName, e);
+					logger.warn("Exception unmarshaling parameter " + paramName, e);
 				}
 			}
 		}

@@ -16,11 +16,11 @@ import org.eclipse.jetty.apache.jsp.JettyJasperInitializer;
 import org.eclipse.jetty.plus.annotation.ContainerInitializer;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class UberjarDaemon implements IDaemon {
-//	private static final Logger logger = LoggerFactory.getLogger(UberjarDaemon.class);
+	private static final Logger logger = LoggerFactory.getLogger(UberjarDaemon.class);
 	
 	// Version of Launcher that sets things up to allow JSPs
 	// to work.
@@ -67,8 +67,8 @@ public class UberjarDaemon implements IDaemon {
 		} catch (Exception e) {
 			// This situation isn't ideal, but we'll keep running
 			// anyway (with the webapp files in the system temp dir)
-			//logger.warn("Error creating instance-specific temp dir: {}", e.getMessage());
-			//logger.warn("Webapp files will be placed in default temp dir {}", System.getProperty("java.io.tmpdir"));
+			logger.warn("Error creating instance-specific temp dir: {}", e.getMessage());
+			logger.warn("Webapp files will be placed in default temp dir {}", System.getProperty("java.io.tmpdir"));
 		}
 		
 		// Launch the webapp!
@@ -130,7 +130,7 @@ public class UberjarDaemon implements IDaemon {
 			try {
 				FileUtils.deleteDirectory(tmpdir);
 			} catch (IOException e) {
-				//logger.error("Error deleting temp directory", e);
+				logger.error("Error deleting temp directory", e);
 			}
 		}
 	}

@@ -11,18 +11,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DBUtil {
-//	private static final Logger logger = LoggerFactory.getLogger(DBUtil.class);
+	private static final Logger logger = LoggerFactory.getLogger(DBUtil.class);
 	
 	public static void closeQuietly(Connection conn) {
 		if (conn != null) {
 			try {
 				conn.close();
 			} catch (SQLException e) {
-				//logger.warn("Couldn't close connection", e);
+				logger.warn("Couldn't close connection", e);
 			}
 		}
 	}
@@ -32,7 +32,7 @@ public class DBUtil {
 			try {
 				stmt.close();
 			} catch (SQLException e) {
-				//logger.warn("Couldn't close prepared statement", e);
+				logger.warn("Couldn't close prepared statement", e);
 			}
 		}
 	}
@@ -42,7 +42,7 @@ public class DBUtil {
 			try {
 				resultSet.close();
 			} catch (SQLException e) {
-				//logger.warn("Couldn't close result set", e);
+				logger.warn("Couldn't close result set", e);
 			}
 		}
 	}
