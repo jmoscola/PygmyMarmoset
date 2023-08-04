@@ -1,26 +1,26 @@
 
 jetty_version=9.4.51.v20230217
-https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-server/${jetty_version}/jetty-server-${jetty_version}.jar
+https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-server/${jetty_version}/jetty-server-${jetty_version}.jar
   Jetty9/lib/jetty-server-${jetty_version}.jar
-https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-jmx/${jetty_version}/jetty-jmx-${jetty_version}.jar
+https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-jmx/${jetty_version}/jetty-jmx-${jetty_version}.jar
   Jetty9/lib/jetty-jmx-${jetty_version}.jar
-https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-util/${jetty_version}/jetty-util-${jetty_version}.jar
+https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-util/${jetty_version}/jetty-util-${jetty_version}.jar
   Jetty9/lib/jetty-util-${jetty_version}.jar
-https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-webapp/${jetty_version}/jetty-webapp-${jetty_version}.jar
+https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-webapp/${jetty_version}/jetty-webapp-${jetty_version}.jar
   Jetty9/lib/jetty-webapp-${jetty_version}.jar
-https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlet/${jetty_version}/jetty-servlet-${jetty_version}.jar
+https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-servlet/${jetty_version}/jetty-servlet-${jetty_version}.jar
   Jetty9/lib/jetty-servlet-${jetty_version}.jar
-https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-http/${jetty_version}/jetty-http-${jetty_version}.jar
+https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-http/${jetty_version}/jetty-http-${jetty_version}.jar
   Jetty9/lib/jetty-http-${jetty_version}.jar
-https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-io/${jetty_version}/jetty-io-${jetty_version}.jar
+https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-io/${jetty_version}/jetty-io-${jetty_version}.jar
   Jetty9/lib/jetty-io-${jetty_version}.jar
-https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-security/${jetty_version}/jetty-security-${jetty_version}.jar
+https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-security/${jetty_version}/jetty-security-${jetty_version}.jar
   Jetty9/lib/jetty-security-${jetty_version}.jar
-https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-annotations/${jetty_version}/jetty-annotations-${jetty_version}.jar
+https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-annotations/${jetty_version}/jetty-annotations-${jetty_version}.jar
   Jetty9/lib/jetty-annotations-${jetty_version}.jar
-https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-xml/${jetty_version}/jetty-xml-${jetty_version}.jar
+https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-xml/${jetty_version}/jetty-xml-${jetty_version}.jar
   Jetty9/lib/jetty-xml-${jetty_version}.jar
-https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-plus/${jetty_version}/jetty-plus-${jetty_version}.jar
+https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-plus/${jetty_version}/jetty-plus-${jetty_version}.jar
   Jetty9/lib/jetty-plus-${jetty_version}.jar
 https://repo1.maven.org/maven2/org/eclipse/jetty/apache-jsp/${jetty_version}/apache-jsp-${jetty_version}.jar
   Jetty9/lib/apache-jsp/org.eclipse.jetty.apache-jsp-${jetty_version}.jar
@@ -28,9 +28,12 @@ https://repo1.maven.org/maven2/org/eclipse/jetty/apache-jsp/${jetty_version}/apa
   
   
   
-
-https://repo.maven.apache.org/maven2/org/eclipse/jetty/toolchain/jetty-schemas/3.1/jetty-schemas-3.1.jar
-  Jetty9/lib/jetty-schemas-3.1.jar
+https://repo1.maven.org/maven2/org/eclipse/jetty/toolchain/jetty-schemas/5.2/jetty-schemas-5.2.jar
+  Jetty9/lib/jetty-schemas-5.2.jar
+  
+  
+  
+  
 https://repo.maven.apache.org/maven2/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar
   Jetty9/lib/servlet-api-3.1.jar
 https://repo.maven.apache.org/maven2/javax/annotation/javax.annotation-api/1.2/javax.annotation-api-1.2.jar
