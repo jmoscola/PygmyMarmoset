@@ -6,18 +6,16 @@
 
 package edu.ycp.cs.pygmymarmoset.app.tag;
 
-import java.io.IOException;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.JspWriter;
-
-import org.apache.commons.lang3.StringEscapeUtils;
-
 import edu.ycp.cs.pygmymarmoset.app.model.introspect.DBField;
 import edu.ycp.cs.pygmymarmoset.app.servlet.Constants;
 import edu.ycp.cs.pygmymarmoset.app.util.BeanUtil;
+import org.apache.commons.text.StringEscapeUtils;
+
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class InputTag extends BeanTag {
 	private String type;

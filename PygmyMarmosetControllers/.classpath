@@ -5,19 +5,14 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/PygmyMarmosetLogging"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/PygmyMarmosetModelClasses"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/PygmyMarmosetPersistence"/>
-	<classpathentry kind="lib" path="/PygmyMarmosetWebapp/war/WEB-INF/lib/commons-io-2.5.jar">
+	<classpathentry kind="lib" path="/PygmyMarmosetWebapp/war/WEB-INF/lib/commons-io-2.13.0.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="https://commons.apache.org/proper/commons-io/javadocs/api-2.5/"/>
+			<attribute name="javadoc_location" value="https://javadoc.io/doc/commons-io/commons-io/2.13.0/index.html"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/PygmyMarmosetWebapp/war/WEB-INF/lib/commons-lang3-3.5.jar">
+	<classpathentry kind="lib" path="/PygmyMarmosetWebapp/war/WEB-INF/lib/commons-csv-1.10.0.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="http://commons.apache.org/proper/commons-lang/javadocs/api-3.5/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/PygmyMarmosetWebapp/war/WEB-INF/lib/commons-csv-1.4.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="https://commons.apache.org/proper/commons-csv/archives/1.4/apidocs/"/>
+			<attribute name="javadoc_location" value="https://javadoc.io/doc/org.apache.commons/commons-csv/1.10.0/index.html"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="bin"/>

@@ -6,27 +6,23 @@
 
 package edu.ycp.cs.pygmymarmoset.model.persist.txn;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.sql.Blob;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipException;
-import java.util.zip.ZipInputStream;
+import edu.ycp.cs.pygmymarmoset.app.model.Project;
+import edu.ycp.cs.pygmymarmoset.app.model.Submission;
+import edu.ycp.cs.pygmymarmoset.app.model.User;
+import edu.ycp.cs.pygmymarmoset.model.persist.DatabaseRunnable;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.input.CountingInputStream;
 import org.apache.commons.io.input.TeeInputStream;
 import org.apache.commons.io.output.NullOutputStream;
 
-import edu.ycp.cs.pygmymarmoset.app.model.Project;
-import edu.ycp.cs.pygmymarmoset.app.model.Submission;
-import edu.ycp.cs.pygmymarmoset.app.model.User;
-import edu.ycp.cs.pygmymarmoset.model.persist.DatabaseRunnable;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.sql.*;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipException;
+import java.util.zip.ZipInputStream;
 
 public class CreateSubmission extends DatabaseRunnable<Submission> {
 	private Project project;
@@ -149,7 +145,6 @@ public class CreateSubmission extends DatabaseRunnable<Submission> {
 	}
 	
 	public static void drain(InputStream is) throws IOException {
-		NullOutputStream sink = new NullOutputStream();
-		IOUtils.copy(is, sink);
+		IOUtils.copy(is, NullOutputStream.INSTANCE);
 	}
 }
