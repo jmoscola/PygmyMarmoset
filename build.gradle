@@ -121,7 +121,7 @@ task copyJettyDeps(type: Copy) {
 // and works.
 
 task explodeJstl(type: Copy) {
-	from zipTree('Jetty9/lib/apache-jstl/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar')
+	from zipTree('Jetty9/lib/apache-jstl/taglibs-standard-impl-1.2.5.jar')
 	into 'build/apache-jstl'
 }
 
