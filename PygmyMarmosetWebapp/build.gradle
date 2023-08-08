@@ -26,4 +26,5 @@ dependencies {
 
 clean {
 	delete 'war/WEB-INF/classes'
+	delete 'war/WEB-INF/lib'
 }

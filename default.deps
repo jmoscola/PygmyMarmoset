@@ -26,12 +26,12 @@ https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-plus/${jetty_version}/jet
   Jetty9/lib/jetty-plus-${jetty_version}.jar
 https://repo1.maven.org/maven2/org/eclipse/jetty/apache-jsp/${jetty_version}/apache-jsp-${jetty_version}.jar
   Jetty9/lib/apache-jsp/apache-jsp-${jetty_version}.jar
+
+
 https://repo1.maven.org/maven2/org/eclipse/jetty/toolchain/jetty-schemas/5.2/jetty-schemas-5.2.jar
   Jetty9/lib/jetty-schemas-5.2.jar
 https://repo1.maven.org/maven2/org/eclipse/jdt/core/compiler/ecj/4.6.1/ecj-4.6.1.jar
   Jetty9/lib/apache-jsp/ecj-4.6.1.jar
-
-
 https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar
   Jetty9/lib/javax.servlet-api-4.0.1.jar
 https://repo1.maven.org/maven2/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2.jar
@@ -65,8 +65,8 @@ https://repo1.maven.org/maven2/org/ow2/asm/asm-commons/${asm_version}/asm-common
   Jetty9/lib/annotations/asm-commons-${asm_version}.jar
 
 
-##############################  LATEST = 3.1.4
-mariadb_version=1.5.7
+##############################
+mariadb_version=3.1.4
 ##############################
 https://repo1.maven.org/maven2/org/mariadb/jdbc/mariadb-java-client/${mariadb_version}/mariadb-java-client-${mariadb_version}.jar
   PygmyMarmosetWebapp/war/WEB-INF/lib/mariadb-java-client-${mariadb_version}.jar
@@ -83,28 +83,72 @@ https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/${jackson
   PygmyMarmosetWebapp/war/WEB-INF/lib/jackson-core-${jackson_version}.jar
 
 
-https://repo1.maven.org/maven2/org/reflections/reflections/0.10.2/reflections-0.10.2.jar
-  PygmyMarmosetWebapp/war/WEB-INF/lib/reflections-0.10.2.jar
-https://repo1.maven.org/maven2/com/google/guava/guava/32.1.2-jre/guava-32.1.2-jre.jar
-  PygmyMarmosetWebapp/war/WEB-INF/lib/guava-32.1.2-jre.jar
-https://repo1.maven.org/maven2/org/javassist/javassist/3.29.2-GA/javassist-3.29.2-GA.jar
-  PygmyMarmosetWebapp/war/WEB-INF/lib/javassist-3.29.2-GA.jar
+################################
+reflections_version=0.10.2
+################################
+https://repo1.maven.org/maven2/org/reflections/reflections/${reflections_version}/reflections-${reflections_version}.jar
+  PygmyMarmosetWebapp/war/WEB-INF/lib/reflections-${reflections_version}.jar
 
 
-https://repo1.maven.org/maven2/org/apache/commons/commons-csv/1.10.0/commons-csv-1.10.0.jar
-  PygmyMarmosetWebapp/war/WEB-INF/lib/commons-csv-1.10.0.jar
-https://repo1.maven.org/maven2/org/apache/commons/commons-text/1.10.0/commons-text-1.10.0.jar
-  PygmyMarmosetWebapp/war/WEB-INF/lib/commons-text-1.10.0.jar
-  PygmyMarmosetLauncher/lib/commons-text-1.10.0.jar
-https://repo1.maven.org/maven2/commons-beanutils/commons-beanutils/1.9.4/commons-beanutils-1.9.4.jar
-  PygmyMarmosetWebapp/war/WEB-INF/lib/commons-beanutils-1.9.4.jar
-https://repo1.maven.org/maven2/commons-io/commons-io/2.13.0/commons-io-2.13.0.jar
-  PygmyMarmosetWebapp/war/WEB-INF/lib/commons-io-2.13.0.jar
-  PygmyMarmosetLauncher/lib/commons-io-2.13.0.jar
-https://repo.maven.apache.org/maven2/commons-logging/commons-logging/1.2/commons-logging-1.2.jar
-  PygmyMarmosetLogging/lib/commons-logging-1.2.jar
-  PygmyMarmosetWebapp/war/WEB-INF/lib/commons-logging-1.2.jar
+################################
+guava_version=32.1.2-jre
+################################
+https://repo1.maven.org/maven2/com/google/guava/guava/${guava_version}/guava-${guava_version}.jar
+  PygmyMarmosetWebapp/war/WEB-INF/lib/guava-${guava_version}.jar
 
+
+################################
+javassist_version=3.29.2-GA
+################################
+https://repo1.maven.org/maven2/org/javassist/javassist/${javassist_version}/javassist-${javassist_version}.jar
+  PygmyMarmosetWebapp/war/WEB-INF/lib/javassist-${javassist_version}.jar
+
+
+################################
+commons_io_version=2.13.0
+################################
+https://repo1.maven.org/maven2/commons-io/commons-io/${commons_io_version}/commons-io-${commons_io_version}.jar
+  PygmyMarmosetWebapp/war/WEB-INF/lib/commons-io-${commons_io_version}.jar
+  PygmyMarmosetLauncher/lib/commons-io-${commons_io_version}.jar
+
+
+################################
+commons_lang3_version=3.13.0
+################################
+https://repo1.maven.org/maven2/org/apache/commons/commons-lang3/${commons_lang3_version}/commons-lang3-${commons_lang3_version}.jar
+  PygmyMarmosetWebapp/war/WEB-INF/lib/commons-lang3-${commons_lang3_version}.jar
+  PygmyMarmosetLauncher/lib/commons-lang3-${commons_lang3_version}.jar
+
+
+################################
+commons_text_version=1.10.0
+################################
+https://repo1.maven.org/maven2/org/apache/commons/commons-text/${commons_text_version}/commons-text-${commons_text_version}.jar
+  PygmyMarmosetWebapp/war/WEB-INF/lib/commons-text-${commons_text_version}.jar
+  PygmyMarmosetLauncher/lib/commons-text-${commons_text_version}.jar
+
+
+################################
+commons_csv_version=1.10.0
+################################
+https://repo1.maven.org/maven2/org/apache/commons/commons-csv/${commons_csv_version}/commons-csv-${commons_csv_version}.jar
+  PygmyMarmosetWebapp/war/WEB-INF/lib/commons-csv-${commons_csv_version}.jar
+
+
+################################
+commons_beanutils_version=1.9.4
+################################
+https://repo1.maven.org/maven2/commons-beanutils/commons-beanutils/${commons_beanutils_version}/commons-beanutils-${commons_beanutils_version}.jar
+  PygmyMarmosetWebapp/war/WEB-INF/lib/commons-beanutils-${commons_beanutils_version}.jar
+
+
+################################
+commons_logging_version=1.2
+################################
+https://repo.maven.apache.org/maven2/commons-logging/commons-logging/${commons_logging_version}/commons-logging-${commons_logging_version}.jar
+  PygmyMarmosetLogging/lib/commons-logging-${commons_logging_version}.jar
+  PygmyMarmosetWebapp/war/WEB-INF/lib/commons-logging-${commons_logging_version}.jar
+  
 
 ################################
 daemon_version=0.8

@@ -77,7 +77,7 @@ public class MariaDBDatabase implements IDatabase {
 	static {
 		PMConfig config = PMConfig.getInstance();
 		StringBuilder buf = new StringBuilder();
-		buf.append("jdbc:mysql://");
+		buf.append("jdbc:mariadb://");
 		buf.append(config.getProperty(PMConfig.DB_HOST));
 		buf.append("/");
 		buf.append(config.getProperty(PMConfig.DB_NAME));
