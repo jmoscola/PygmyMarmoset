@@ -47,7 +47,7 @@ public abstract class AbstractFormServlet extends AbstractServlet {
 			params.unmarshal(); // read data from form into model object(s)
 			outcome = doLogic(params, req, resp);
 		} catch (PygmyMarmosetException e) {
-			logger.error("Error executing form logic", e);
+			logger.error("Error executing form logic: {}", e.getMessage());
 			req.setAttribute("errmsg", e.getErrorMessage());
 		}
 		if (outcome == LogicOutcome.STAY_ON_PAGE) {

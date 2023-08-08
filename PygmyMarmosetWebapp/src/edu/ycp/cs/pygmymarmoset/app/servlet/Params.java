@@ -135,7 +135,7 @@ public class Params {
 						}
 					}
 				} catch (Exception e) {
-					logger.warn("Exception unmarshaling parameter " + paramName, e);
+					logger.warn("Exception unmarshaling parameter {}: {}", paramName, e.getMessage());
 				}
 			}
 		}

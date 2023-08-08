@@ -276,7 +276,7 @@ public class MariaDBDatabase implements IDatabase {
 				return result;
 			} catch (SQLException e) {
 				if (isDeadlock(e)) {
-					logger.warn("Deadlock detected, retrying transaction " + txn.getName(), e);
+					logger.warn("Deadlock detected, retrying transaction {}: {}", txn.getName(), e.getMessage());
 					attempts++;
 				} else if (e.getSQLState() != null && e.getSQLState().equals("23000")) {
 					throw new PersistenceException("Integrity constraint violation (duplicate field value detected)");

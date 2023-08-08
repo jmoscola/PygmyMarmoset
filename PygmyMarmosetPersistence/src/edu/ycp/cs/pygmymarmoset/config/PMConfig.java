@@ -53,7 +53,7 @@ public class PMConfig {
 				instance.load(reader);
 				return true;
 			} catch (IOException e) {
-				logger.error("Error reading pygmymarmoset.properties", e);
+				logger.error("Error reading pygmymarmoset.properties: {}", e.getMessage());
 				return false;
 			}
 		}

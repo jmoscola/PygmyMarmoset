@@ -18,9 +18,11 @@ import edu.ycp.cs.pygmymarmoset.app.model.Term;
 import edu.ycp.cs.pygmymarmoset.app.model.User;
 import edu.ycp.cs.pygmymarmoset.app.model.introspect.Introspect;
 
+// import org.apache.logging.log4j.*;
+
 public class CreateDatabase {
     public static void main(String[] args) throws Exception {
-		configureLog4j();
+// 		configureLog4j();
 		
 		Scanner keyboard = new Scanner(System.in);
 
@@ -73,14 +75,14 @@ public class CreateDatabase {
 	/**
 	 * Configure log4j to log to stdout.
 	 */
-	public static void configureLog4j() {
-		// See: http://robertmaldon.blogspot.com/2007/09/programmatically-configuring-log4j-and.html
-		org.apache.log4j.Logger rootLogger = org.apache.log4j.Logger.getRootLogger();
-		if (!rootLogger.getAllAppenders().hasMoreElements()) {
-			rootLogger.setLevel(org.apache.log4j.Level.WARN);
-			rootLogger.addAppender(
-					new org.apache.log4j.ConsoleAppender(
-						new org.apache.log4j.PatternLayout("%-5p [%t]: %m%n")));
-		}
-	}
+// 	public static void configureLog4j() {
+// 		// See: http://robertmaldon.blogspot.com/2007/09/programmatically-configuring-log4j-and.html
+// 		Logger rootLogger = LogManager.getRootLogger();
+// 		if (!rootLogger.getAllAppenders().hasMoreElements()) {
+// 			rootLogger.setLevel(Level.WARN);
+// 			rootLogger.addAppender(
+// 					new LogManager.ConsoleAppender(
+// 						new LogManager.PatternLayout("%-5p [%t]: %m%n")));
+// 		}
+// 	}
 }

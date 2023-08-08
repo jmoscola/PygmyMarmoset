@@ -16,6 +16,7 @@ import org.eclipse.jetty.apache.jsp.JettyJasperInitializer;
 import org.eclipse.jetty.plus.annotation.ContainerInitializer;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -130,7 +131,7 @@ public class UberjarDaemon implements IDaemon {
 			try {
 				FileUtils.deleteDirectory(tmpdir);
 			} catch (IOException e) {
-				logger.error("Error deleting temp directory", e);
+				logger.error("Error deleting temp directory: {}", e.getMessage());
 			}
 		}
 	}

@@ -22,7 +22,7 @@ public class DBUtil {
 			try {
 				conn.close();
 			} catch (SQLException e) {
-				logger.warn("Couldn't close connection", e);
+				logger.warn("Couldn't close connection: {}", e.getMessage());
 			}
 		}
 	}
@@ -32,7 +32,7 @@ public class DBUtil {
 			try {
 				stmt.close();
 			} catch (SQLException e) {
-				logger.warn("Couldn't close prepared statement", e);
+				logger.warn("Couldn't close prepared statement: {}", e.getMessage());
 			}
 		}
 	}
@@ -42,7 +42,7 @@ public class DBUtil {
 			try {
 				resultSet.close();
 			} catch (SQLException e) {
-				logger.warn("Couldn't close result set", e);
+				logger.warn("Couldn't close result set: {}", e.getMessage());
 			}
 		}
 	}
