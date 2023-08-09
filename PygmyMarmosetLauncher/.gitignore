@@ -1,6 +1,4 @@
-/bin/*
-/bin/
-/logs/*
+/lib/*
+/lib/
 /.gradle
 /build
-/lib

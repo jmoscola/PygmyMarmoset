@@ -7,20 +7,20 @@ allprojects {
 	targetCompatibility = 1.8
 }
 
-sourceSets {
-	main {
-		java {
-			srcDirs = ['src']
-			destinationDirectory.set(file('bin'))
-		}
-		output.resourcesDir = file('bin')
-	}
-}
+//sourceSets {
+//	main {
+//		java {
+//			srcDirs = ['src']
+//			destinationDirectory.set(file('bin'))
+//		}
+//		output.resourcesDir = file('bin')
+//	}
+//}
 
-jar {
-	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-}
+//jar {
+//	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+//}
 
-clean {
-	delete 'bin'
-}
+//clean {
+//	delete 'bin'
+//}

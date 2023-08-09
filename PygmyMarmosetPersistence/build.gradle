@@ -7,18 +7,18 @@ allprojects {
 	targetCompatibility = 1.8
 }
 
-sourceSets {
-	main {
-		java {
-			srcDirs = ['src']
-			destinationDirectory.set(file('bin'))
-		}
-		output.resourcesDir = file('bin')
-	}
-}
+//sourceSets {
+//	main {
+//		java {
+//			srcDirs = ['src']
+//			destinationDirectory.set(file('bin'))
+//		}
+//		output.resourcesDir = file('bin')
+//	}
+//}
 
 jar {
-	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+//	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 	exclude 'pygmymarmoset.properties'
 }
 
@@ -27,6 +27,6 @@ dependencies {
 	implementation files(eclipseClasspath(project))
 }
 
-clean {
-	delete 'bin'
-}
+//clean {
+//	delete 'bin'
+//}

@@ -8,5 +8,5 @@
 	<classpathentry exported="true" kind="lib" path="lib/slf4j-api-2.0.7.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/slf4j-reload4j-2.0.7.jar"/>
 	<classpathentry kind="lib" path="lib/commons-logging-1.2.jar"/>
-	<classpathentry kind="output" path="bin"/>
+<!--	<classpathentry kind="output" path="build"/> -->
 </classpath>
