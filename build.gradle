@@ -29,7 +29,7 @@ task copyWebappClasses(
 		':copyWebappProjectJars', // ensures depended-on classes are available
 		':PygmyMarmosetWebapp:compileJava'
 	]){
-	from 'PygmyMarmosetWebapp/war/WEB-INF/classes'
+	from 'PygmyMarmosetWebapp/build/classes/java/main'
 	into 'build/uberJarStaging/war/WEB-INF/classes'
 	exclude "pygmymarmoset.properties"
 }
@@ -95,7 +95,7 @@ task copyWebappJars(type: Copy) {
 
 // Copy the launcher program classfiles into the uberjar staging area.
 task copyLauncherFiles(type: Copy, dependsOn: [':PygmyMarmosetLauncher:compileJava']) {
-	from 'PygmyMarmosetLauncher/bin'
+	from 'PygmyMarmosetLauncher/build/classes/java/main'
 	into 'build/uberJarStaging'
 }
 
@@ -129,6 +129,11 @@ task copyJstlClassFiles(type: Copy, dependsOn: [':explodeJstl']) {
 	into 'build/uberJarStaging/war/WEB-INF/classes'
 	include 'org/**'
 }
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+} 
+
 
 ///////////////////////////////////////////////////////////////////////
 // Common methods
