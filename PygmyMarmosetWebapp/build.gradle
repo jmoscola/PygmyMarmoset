@@ -7,15 +7,15 @@ allprojects {
 	targetCompatibility = 1.8
 }
 
-sourceSets {
-	main {
-		java {
-			srcDirs = ['src']
-			destinationDirectory.set(file('war/WEB-INF/classes'))
-		}
-		output.resourcesDir = 'war/WEB-INF/classes'
-	}
-}
+//sourceSets {
+//	main {
+//		java {
+//			srcDirs = ['src']
+//			destinationDirectory.set(file('war/WEB-INF/classes'))
+//		}
+//		output.resourcesDir = 'war/WEB-INF/classes'
+//	}
+//}
 
 dependencies {
 	implementation project(path: ':PygmyMarmosetModelClasses')
@@ -24,6 +24,6 @@ dependencies {
 	implementation files(eclipseClasspath(project))
 }
 
-clean {
-	delete 'war/WEB-INF/classes'
-}
+//clean {
+//	delete 'war/WEB-INF/classes'
+//}
