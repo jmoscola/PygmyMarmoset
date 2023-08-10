@@ -2,31 +2,19 @@ plugins {
 	id 'java'
 }
 
-allprojects {
-	sourceCompatibility = 1.8
-	targetCompatibility = 1.8
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_20
+    targetCompatibility = JavaVersion.VERSION_20
 }
 
-//sourceSets {
-//	main {
-//		java {
-//			srcDirs = ['src']
-//			destinationDirectory.set(file('bin'))
-//		}
-//		output.resourcesDir = file('bin')
-//	}
-//}
-
-jar {
-//	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-	exclude 'pygmymarmoset.properties'
-}
 
 dependencies {
 	implementation project(path: ':PygmyMarmosetModelClasses')
 	implementation files(eclipseClasspath(project))
 }
 
-//clean {
-//	delete 'bin'
-//}
+
+jar {
+	exclude 'pygmymarmoset.properties'
+}

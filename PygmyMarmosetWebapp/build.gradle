@@ -2,20 +2,12 @@ plugins {
 	id 'java'
 }
 
-allprojects {
-	sourceCompatibility = 1.8
-	targetCompatibility = 1.8
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_20
+    targetCompatibility = JavaVersion.VERSION_20
 }
 
-//sourceSets {
-//	main {
-//		java {
-//			srcDirs = ['src']
-//			destinationDirectory.set(file('war/WEB-INF/classes'))
-//		}
-//		output.resourcesDir = 'war/WEB-INF/classes'
-//	}
-//}
 
 dependencies {
 	implementation project(path: ':PygmyMarmosetModelClasses')
@@ -23,7 +15,3 @@ dependencies {
 	implementation project(path: ':PygmyMarmosetControllers')
 	implementation files(eclipseClasspath(project))
 }
-
-//clean {
-//	delete 'war/WEB-INF/classes'
-//}
