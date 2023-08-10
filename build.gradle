@@ -66,6 +66,10 @@ task copyConfigProperties(type: Copy) {
 	include 'pygmymarmoset.properties'
 //	include 'log4j2.properties'
 	
+	from project.projectDir
+	into 'build/uberJarStaging'
+	include 'log4j2.properties'
+	
 	// make sure there actually was a configuration properties file to copy
 	if (inputs.sourceFiles.empty)
 		throw new StopExecutionException("No pygmymarmoset.properties found")
