@@ -79,6 +79,8 @@ asm_version=9.5
 ################################
 https://repo1.maven.org/maven2/org/ow2/asm/asm/${asm_version}/asm-${asm_version}.jar
   Jetty9/lib/annotations/asm-${asm_version}.jar
+https://repo1.maven.org/maven2/org/ow2/asm/asm-tree/${asm_version}/asm-tree-${asm_version}.jar
+  Jetty9/lib/annotations/asm-tree-${asm_version}.jar
 https://repo1.maven.org/maven2/org/ow2/asm/asm-commons/${asm_version}/asm-commons-${asm_version}.jar
   Jetty9/lib/annotations/asm-commons-${asm_version}.jar
 
@@ -172,51 +174,55 @@ https://repo1.maven.org/maven2/commons-beanutils/commons-beanutils/${commons_bea
   PygmyMarmosetPersistence/lib/commons-beanutils-${commons_beanutils_version}.jar
 
 
-
-  
-  
-
-
-
-
-  
-################################
-commons_logging_version=1.2
-################################
-https://repo.maven.apache.org/maven2/commons-logging/commons-logging/${commons_logging_version}/commons-logging-${commons_logging_version}.jar
-  PygmyMarmosetLogging/lib/commons-logging-${commons_logging_version}.jar
-  PygmyMarmosetWebapp/war/WEB-INF/lib/commons-logging-${commons_logging_version}.jar
-
-
-################################
-log4j_version=2.20.0
-################################
-https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-core/${log4j_version}/log4j-core-${log4j_version}.jar
-  PygmyMarmosetLogging/lib/log4j-${log4j_version}.jar
-  PygmyMarmosetWebapp/war/WEB-INF/lib/log4j-${log4j_version}.jar
-https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-api/${log4j_version}/log4j-api-${log4j_version}.jar
-  PygmyMarmosetLogging/lib/log4j-api-${log4j_version}.jar
-  PygmyMarmosetWebapp/war/WEB-INF/lib/log4j-api-${log4j_version}.jar
-https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-jcl/2.20.0/log4j-jcl-${log4j_version}.jar
-  PygmyMarmosetLogging/lib/log4j-jcl-${log4j_version}.jar
-  PygmyMarmosetWebapp/war/WEB-INF/lib/log4j-jcl-${log4j_version}.jar
-https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-slf4j2-impl/2.20.0/log4j-slf4j2-impl-${log4j_version}.jar
-  PygmyMarmosetLogging/lib/log4j-slf4j2-impl-${log4j_version}.jar
-  PygmyMarmosetWebapp/war/WEB-INF/lib/log4j-slf4j2-impl-${log4j_version}.jar
-
-
 ################################
 slf4j_version=2.0.7
 ################################
 https://repo1.maven.org/maven2/org/slf4j/slf4j-api/${slf4j_version}/slf4j-api-${slf4j_version}.jar
   PygmyMarmosetLogging/lib/slf4j-api-${slf4j_version}.jar
   PygmyMarmosetWebapp/war/WEB-INF/lib/slf4j-api-${slf4j_version}.jar
-https://repo1.maven.org/maven2/org/slf4j/slf4j-reload4j/${slf4j_version}/slf4j-reload4j-${slf4j_version}.jar
-  PygmyMarmosetLogging/lib/slf4j-reload4j-${slf4j_version}.jar
-  PygmyMarmosetWebapp/war/WEB-INF/lib/slf4j-reload4j-${slf4j_version}.jar  
-  
-  
-  
+https://repo1.maven.org/maven2/org/slf4j/slf4j-simple/${slf4j_version}/slf4j-simple-${slf4j_version}.jar
+  PygmyMarmosetLogging/lib/slf4j-simple-${slf4j_version}.jar
+  PygmyMarmosetWebapp/war/WEB-INF/lib/slf4j-simple-${slf4j_version}.jar
+https://repo1.maven.org/maven2/org/slf4j/jcl-over-slf4j/2.0.7/jcl-over-slf4j-${slf4j_version}.jar
+  PygmyMarmosetLogging/lib/jcl-over-slf4j-${slf4j_version}.jar
+  PygmyMarmosetWebapp/war/WEB-INF/lib/jcl-over-slf4j-${slf4j_version}.jar
 
 
 
+
+
+
+
+
+
+
+
+################################
+#log4j_version=2.20.0
+################################
+#https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-api/${log4j_version}/log4j-api-${log4j_version}.jar
+#  PygmyMarmosetLogging/lib/log4j-api-${log4j_version}.jar
+#  PygmyMarmosetWebapp/war/WEB-INF/lib/log4j-api-${log4j_version}.jar
+#https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-core/${log4j_version}/log4j-core-${log4j_version}.jar
+#  PygmyMarmosetLogging/lib/log4j-core-${log4j_version}.jar
+#  PygmyMarmosetWebapp/war/WEB-INF/lib/log4j-core-${log4j_version}.jar
+#https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-slf4j2-impl/2.20.0/log4j-slf4j2-impl-${log4j_version}.jar
+#  PygmyMarmosetLogging/lib/log4j-slf4j2-impl-${log4j_version}.jar
+#  PygmyMarmosetWebapp/war/WEB-INF/lib/log4j-slf4j2-impl-${log4j_version}.jar
+
+
+################################
+#commons_logging_version=1.2
+################################
+#https://repo.maven.apache.org/maven2/commons-logging/commons-logging/${commons_logging_version}/commons-logging-${commons_logging_version}.jar
+#  PygmyMarmosetLogging/lib/commons-logging-${commons_logging_version}.jar
+#  PygmyMarmosetWebapp/war/WEB-INF/lib/commons-logging-${commons_logging_version}.jar
+
+
+#https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-jcl/2.20.0/log4j-jcl-${log4j_version}.jar
+#  PygmyMarmosetLogging/lib/log4j-jcl-${log4j_version}.jar
+#  PygmyMarmosetWebapp/war/WEB-INF/lib/log4j-jcl-${log4j_version}.jar
+  
+#https://repo1.maven.org/maven2/org/slf4j/slf4j-reload4j/${slf4j_version}/slf4j-reload4j-${slf4j_version}.jar
+#  PygmyMarmosetLogging/lib/slf4j-reload4j-${slf4j_version}.jar
+#  PygmyMarmosetWebapp/war/WEB-INF/lib/slf4j-reload4j-${slf4j_version}.jar  

@@ -86,7 +86,7 @@ public class MariaDBDatabase implements IDatabase {
 		buf.append("&password=");
 		buf.append(config.getProperty(PMConfig.DB_PASSWD));
 		JDBC_URL = buf.toString();
-		//System.out.println("JDBC_URL=" + JDBC_URL);
+		// System.out.println("JDBC_URL=" + JDBC_URL);
 	}
 
 	@Override

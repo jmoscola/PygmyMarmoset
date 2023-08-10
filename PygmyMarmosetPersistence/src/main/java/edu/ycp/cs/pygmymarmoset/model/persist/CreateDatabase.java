@@ -19,8 +19,12 @@ import edu.ycp.cs.pygmymarmoset.app.model.User;
 import edu.ycp.cs.pygmymarmoset.app.model.introspect.Introspect;
 
 // import org.apache.logging.log4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CreateDatabase {
+ 	private static final Logger logger = LoggerFactory.getLogger(CreateDatabase.class);
+
     public static void main(String[] args) throws Exception {
 // 		configureLog4j();
 		
