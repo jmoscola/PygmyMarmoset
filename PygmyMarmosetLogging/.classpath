@@ -7,6 +7,7 @@
 	<classpathentry exported="true" kind="lib" path="lib/log4j-core-2.20.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/log4j-api-2.20.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/log4j-slf4j2-impl-2.20.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/log4j-appserver-2.20.0.jar"/>
 	
 <!--	<classpathentry kind="output" path="build"/> -->
 </classpath>
