@@ -10,6 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -233,13 +234,25 @@ public class Query {
 	private static <E> void storeFieldValue(E modelObj, PreparedStatement stmt, int index, DBField field)
 			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, SQLException {
 		Object value = PropertyUtils.getProperty(modelObj, field.getPropertyName());
+
 		if (field.isEnum()) {
 			// Enum values are persisted as the integer ordinal value
 			value = ((Enum<?>)value).ordinal();
+			stmt.setObject(index, value, Types.INTEGER);
 		} else if (field.isBoolean()) {
 			value = ((Boolean)value) ? 1 : 0;
+			stmt.setObject(index, value, Types.TINYINT);
+		} else if (field.isInt()) {
+			stmt.setObject(index, value, Types.INTEGER);
+		} else if (field.isBigInt()) {
+			stmt.setObject(index, value, Types.BIGINT);
+		} else if (field.isFixedString()) {
+			stmt.setObject(index, value, Types.CHAR);
+		} else if (field.isUnfixedString()) {
+			stmt.setObject(index, value, Types.VARCHAR);
+		} else {
+			stmt.setObject(index, value);
 		}
-		stmt.setObject(index, value);
 	}
 
 	/**

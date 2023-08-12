@@ -39,9 +39,9 @@ public class CreateDatabase {
 		String firstName = ConfigurationUtil.ask(keyboard, "Enter first name:");
 		String lastName = ConfigurationUtil.ask(keyboard, "Enter last name:");
 		String passwd = ConfigurationUtil.ask(keyboard, "Enter password:");
-    	
+
 		IDatabase db = DatabaseProvider.getInstance();
-		
+
 		createTable(db, Course.class);
 		createTable(db, Project.class);
 		createTable(db, Role.class);
@@ -49,7 +49,7 @@ public class CreateDatabase {
 		createTable(db, SubmissionBlob.class);
 		createTable(db, User.class);
 		createTable(db, Term.class);
-		
+
 		User user = new User();
 		user.setUsername(username);
 		user.setFirstName(firstName);

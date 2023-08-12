@@ -272,7 +272,6 @@ public class MariaDBDatabase implements IDatabase {
 				conn.setAutoCommit(false);
 				E result = txn.execute(conn);
 				conn.commit();
-				
 				return result;
 			} catch (SQLException e) {
 				if (isDeadlock(e)) {

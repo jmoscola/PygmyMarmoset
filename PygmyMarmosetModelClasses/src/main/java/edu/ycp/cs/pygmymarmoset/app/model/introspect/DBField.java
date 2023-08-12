@@ -171,7 +171,7 @@ public class DBField {
 			buf.append(")");
 			return buf.toString();
 		} else if (Enum.class.isAssignableFrom(javaType)) {
-			// Enums are mapped to intss in the database
+			// Enums are mapped to ints in the database
 			return "int";
 		} else if (javaType == byte[].class) {
 			// Make sure the @Blob annotation is present
@@ -194,5 +194,21 @@ public class DBField {
 
 	public boolean isEnum() {
 		return java.lang.Enum.class.isAssignableFrom(javaType);
+	}
+
+	public boolean isInt() {
+		return javaType == Integer.class || javaType == Integer.TYPE;
+	}
+
+	public boolean isBigInt() {
+		return javaType == Long.class || javaType == Long.TYPE;
+	}
+
+	public boolean isFixedString() {
+		return javaType == String.class && fixed;
+	}
+
+	public boolean isUnfixedString() {
+		return javaType == String.class && !fixed;
 	}
 }
