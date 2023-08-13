@@ -35,6 +35,7 @@ public class PMConfig {
 			// running the "createdb" from the command line, then we need
 			// to specify the location of the config properties file
 			// within the uberjar.
+			logger.warn("Attempting to use 'war/WEB-INF/classes/pygmymarmoset.properties' instead");
 			if (!loadPropertiesFromResource("war/WEB-INF/classes/pygmymarmoset.properties")) {
 				logger.error("Could not find pygmymarmoset.properties");
 			}

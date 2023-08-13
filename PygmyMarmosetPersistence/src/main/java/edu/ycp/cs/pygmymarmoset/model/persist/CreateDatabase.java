@@ -18,19 +18,16 @@ import edu.ycp.cs.pygmymarmoset.app.model.Term;
 import edu.ycp.cs.pygmymarmoset.app.model.User;
 import edu.ycp.cs.pygmymarmoset.app.model.introspect.Introspect;
 
-// import org.apache.logging.log4j.*;
-
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class CreateDatabase {
-// 	private static final Logger logger = LoggerFactory.getLogger(CreateDatabase.class);
+	private static final Logger logger = LoggerFactory.getLogger(CreateDatabase.class);
 
     public static void main(String[] args) throws Exception {
-// 		configureLog4j();
 
-//		logger.info("Creating database...");
+		logger.info("Creating database...");
 		
 		Scanner keyboard = new Scanner(System.in);
 
@@ -79,18 +76,4 @@ public class CreateDatabase {
 		term.setSeq(seq);
 		db.createTerm(term);
 	}
-
-	/**
-	 * Configure log4j to log to stdout.
-	 */
-// 	public static void configureLog4j() {
-// 		// See: http://robertmaldon.blogspot.com/2007/09/programmatically-configuring-log4j-and.html
-// 		Logger rootLogger = LogManager.getRootLogger();
-// 		if (!rootLogger.getAllAppenders().hasMoreElements()) {
-// 			rootLogger.setLevel(Level.WARN);
-// 			rootLogger.addAppender(
-// 					new LogManager.ConsoleAppender(
-// 						new LogManager.PatternLayout("%-5p [%t]: %m%n")));
-// 		}
-// 	}
 }
