@@ -16,7 +16,10 @@ task uberJar(
 		':copyLauncherFiles',
 		':copyJettyDeps']) {
 	manifest {
-		attributes 'Main-Class' : 'edu.ycp.cs.pygmymarmoset.main.UberjarMain'
+		attributes ([
+			'Main-Class' : 'edu.ycp.cs.pygmymarmoset.main.UberjarMain',
+			'Multi-Release' : 'true'
+        ])
 	}
     destinationDirectory = layout.buildDirectory.dir('.')
 	archiveBaseName = 'pygmyMarmosetApp'
@@ -111,30 +114,18 @@ task copyLauncherFiles(type: Copy, dependsOn: [':PygmyMarmosetLauncher:compileJa
 	into 'build/uberJarStaging'
 }
 
-// Copy the jetty-logging.properties file
-task copyJettyLoggingProperties(type: Copy) {
-	// Jetty logging is currently not working as expected.  Would like Jetty to
-	// direct all output to the Log4j2 implementation, but it isn't working yet.
-	// Included 'log4j-appserver' as a dependency to get the following:
-	// org.apache.logging.log4j.appserver.jetty.Log4j2Logger
-	// But that doesn't seem to fix the issue.  Instead, Jetty seems to be using
-	// it's default logger
-	// This is a problem for another day.
-	from project.projectDir
-	into 'build/uberJarStaging'
-	include 'jetty-logging.properties'
-
-	// make sure there actually was a jetty-logging.properties file to copy
-	if (inputs.sourceFiles.empty)
-		throw new StopExecutionException("No jetty-logging.properties found")
-}
-
 // Copy all of the contents of the Jetty jarfiles into the uberjar staging area.
-task copyJettyDeps(type: Copy, dependsOn: [':copyJettyLoggingProperties']) {
-	duplicatesStrategy = 'INCLUDE'
+task copyJettyDeps(type: Copy) {
+	duplicatesStrategy = 'WARN'
 	from requiredJars(project(':PygmyMarmosetLauncher')).collect { zipTree(it) }
 	into 'build/uberJarStaging'
-	exclude 'META-INF/**'
+	exclude(
+            'module-info.class',
+            'about*',
+            'META-INF/DEPENDENCIES*',
+            'META-INF/MANIFEST.MF',
+            'META-INF/versions/9/module-info.class'
+        )
 }
 
 // Note: the following targets copy the .tld files and classfiles

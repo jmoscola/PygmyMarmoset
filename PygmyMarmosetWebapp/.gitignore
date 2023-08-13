@@ -1,5 +1,0 @@
-/war/WEB-INF/classes/*
-/war/WEB-INF/lib/*.jar
-/war/WEB-INF/lib/
-/.gradle
-/build
