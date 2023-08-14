@@ -6,11 +6,13 @@
 **/lib
 **/logs
 **/build
+**/bin
 **/classes
 
 .DS_Store
 *.swp
 *.bak
+org.eclipse.jdt.ui.prefs
 
 
 ##########################

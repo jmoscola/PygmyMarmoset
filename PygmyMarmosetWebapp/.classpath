@@ -1,60 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-<!--	<classpathentry kind="src" path="src"/> -->
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17/">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
+	<classpathentry kind="src" path="src/main/java">
+		<attributes>
+			<attribute name="gradle_scope" value="main"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src/main/resources">
+		<attributes>
+			<attribute name="gradle_scope" value="main"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/Jetty9"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/PygmyMarmosetLogging"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/PygmyMarmosetModelClasses"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/PygmyMarmosetControllers"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-text-1.10.0.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="https://javadoc.io/doc/org.apache.commons/commons-text/3.10.0/index.html"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-beanutils-1.9.4.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="https://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/jackson-annotations-2.15.2.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-annotations/2.15.2/index.html"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/jackson-core-2.15.2.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-core/2.15.2/index.html"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/jackson-databind-2.15.2.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-databind/2.15.2/index.html"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/reflections-0.10.2.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="http://ronmamo.github.io/reflections"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/guava-32.1.2-jre.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="https://javadoc.io/doc/com.google.guava/guava/32.1.2/index.html"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/javassist-3.29.2-GA.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="https://jboss-javassist.github.io/javassist/html/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-io-2.13.0.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="https://javadoc.io/doc/commons-io/commons-io/2.13.0/index.html"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Jetty9/lib/javax.servlet-api-4.0.1.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="https://javadoc.io/doc/javax.servlet/javax.servlet-api/4.0.1/index.html"/>
-		</attributes>
-	</classpathentry>
-<!--	<classpathentry kind="output" path="war/WEB-INF/classes"/> -->
+	<classpathentry combineaccessrules="false" kind="src" path="/PygmyMarmosetLogging"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-beanutils-1.9.4.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-io-2.13.0.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-text-1.10.0.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/guava-32.1.2-jre.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jackson-annotations-2.15.2.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jackson-core-2.15.2.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jackson-databind-2.15.2.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/javassist-3.29.2-GA.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/reflections-0.10.2.jar"/>
+	<classpathentry kind="output" path="build/classes/java/main"/>
 </classpath>

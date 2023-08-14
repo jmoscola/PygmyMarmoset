@@ -146,7 +146,7 @@ https://repo1.maven.org/maven2/commons-io/commons-io/${commons_io_version}/commo
 commons_lang3_version=3.13.0
 ################################
 https://repo1.maven.org/maven2/org/apache/commons/commons-lang3/${commons_lang3_version}/commons-lang3-${commons_lang3_version}.jar
-  PygmyMarmosetWebapp/war/WEB-INF/lib/commons-lang3-${commons_lang3_version}.jar
+#  PygmyMarmosetWebapp/war/WEB-INF/lib/commons-lang3-${commons_lang3_version}.jar
   PygmyMarmosetLauncher/lib/commons-lang3-${commons_lang3_version}.jar
 
 
@@ -155,14 +155,12 @@ commons_text_version=1.10.0
 ################################
 https://repo1.maven.org/maven2/org/apache/commons/commons-text/${commons_text_version}/commons-text-${commons_text_version}.jar
   PygmyMarmosetWebapp/war/WEB-INF/lib/commons-text-${commons_text_version}.jar
-  PygmyMarmosetLauncher/lib/commons-text-${commons_text_version}.jar
 
 
 ################################
 commons_csv_version=1.10.0
 ################################
 https://repo1.maven.org/maven2/org/apache/commons/commons-csv/${commons_csv_version}/commons-csv-${commons_csv_version}.jar
-  PygmyMarmosetWebapp/war/WEB-INF/lib/commons-csv-${commons_csv_version}.jar
   PygmyMarmosetControllers/lib/commons-csv-${commons_csv_version}.jar
 
 

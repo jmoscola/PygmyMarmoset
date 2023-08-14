@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-<!--	<classpathentry kind="src" path="src"/> -->
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/PygmyMarmosetLogging"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17/">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
+	<classpathentry kind="src" path="src/main/java">
+		<attributes>
+			<attribute name="gradle_scope" value="main"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/PygmyMarmosetModelClasses"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/PygmyMarmosetPersistence"/>
-	<classpathentry kind="lib" path="lib/commons-io-2.13.0.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="https://javadoc.io/doc/commons-io/commons-io/2.13.0/index.html"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="lib/commons-csv-1.10.0.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="https://javadoc.io/doc/org.apache.commons/commons-csv/1.10.0/index.html"/>
-		</attributes>
-	</classpathentry>
-<!--	<classpathentry kind="output" path="build"/> -->
+	<classpathentry combineaccessrules="false" kind="src" path="/PygmyMarmosetLogging"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.13.0.jar"/>
+	<classpathentry kind="lib" path="lib/commons-csv-1.10.0.jar"/>
+	<classpathentry kind="output" path="build/classes/java/main"/>
 </classpath>
