@@ -1,5 +1,6 @@
 plugins {
 	id 'java'
+	id 'application'
 }
 
 
@@ -9,12 +10,35 @@ java {
 }
 
 
+group = 'edu.ycp.cs.pygmymarmoset'
+
+
+repositories {
+    mavenCentral()
+}
+
+
+ext {
+    commons_beanutils_version = '1.9.4'
+    commons_io_version = '2.13.0'
+    mariadb_java_client_version = '3.1.4'
+}
+
+
 dependencies {
-	implementation project(path: ':PygmyMarmosetModelClasses')
-	implementation files(eclipseClasspath(project))
+	implementation project(':PygmyMarmosetModelClasses')
+	implementation group: 'commons-beanutils', name: 'commons-beanutils', version: "$commons_beanutils_version"
+	implementation group: 'commons-io', name: 'commons-io', version: "$commons_io_version"
+	implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: "$mariadb_java_client_version"
 }
 
 
 jar {
 	exclude 'pygmymarmoset.properties'
+}
+
+// To execute 'main': gradle -q run
+application {
+	mainClass = 'edu.ycp.cs.pygmymarmoset.model.persist.Query'
+	// mainClass = 'edu.ycp.cs.pygmymarmoset.model.persist.CreateDatabase'
 }
