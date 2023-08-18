@@ -1,0 +1,139 @@
+// PygmyMarmoset gradle build script
+///////////////////////////////////////////////////////////////////////
+// Tasks
+///////////////////////////////////////////////////////////////////////
+
+def uberJarStagingDir = "${rootProject.buildDir}/uberJarStaging"
+
+task uberJar (
+	type: Jar,
+	dependsOn: [
+		':copyWebappFiles',
+		':copyLauncherFiles',
+		':copyLauncherDeps',
+		':copyConfigProperties',
+		':copyLog4j2Properties'
+		]) {
+	manifest {
+		attributes ([
+				'Main-Class' : 'edu.ycp.cs.pygmymarmoset.main.UberjarMain',
+				'Multi-Release' : 'true'
+		])
+	}
+	destinationDirectory = layout.buildDirectory.dir('.')
+	archiveBaseName = project.name
+	from uberJarStagingDir
+}
+
+
+task copyWebappFiles (type: Copy, dependsOn: [ ':PygmyMarmosetWebapp:war' ]) {
+	project(':PygmyMarmosetWebapp').afterEvaluate {
+		def PygmyMarmosetWebappLib = project(':PygmyMarmosetWebapp').base.getLibsDirectory().getAsFile().get()
+		from zipTree("${PygmyMarmosetWebappLib}/PygmyMarmosetWebapp.war")
+		into "$uberJarStagingDir/war"
+		exclude	'META-INF/**'
+		duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+	}
+}
+
+
+task copyLauncherFiles (type: Copy, dependsOn: [ ':PygmyMarmosetLauncher:compileJava' ]) {
+	project(':PygmyMarmosetLauncher').afterEvaluate {
+		from project(':PygmyMarmosetLauncher').sourceSets.main.output.classesDirs
+		into uberJarStagingDir
+		duplicatesStrategy = DuplicatesStrategy.WARN
+	}
+}
+
+
+task copyLauncherDeps (type: Copy, dependsOn: [ ':PygmyMarmosetLauncher:compileJava' ]) {
+	project(':PygmyMarmosetLauncher').afterEvaluate {
+		from project(':PygmyMarmosetLauncher').configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+		into uberJarStagingDir
+		exclude(
+				'about*',
+				'module-info.class',
+				'META-INF/*.SF',
+				'META-INF/*.DSA',
+				'META-INF/*.RSA',
+				'META-INF/DEPENDENCIES*',
+				'META-INF/*.tld',
+				'META-INF/MANIFEST.MF',
+				'META-INF/LICENSE*',
+				'META-INF/NOTICE*',
+				'META-INF/versions/9/module-info.class'
+		)
+		duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+	}
+}
+
+
+// Copy the configuration properties
+task copyConfigProperties(type: Copy) {
+	from rootProject.projectDir
+	into "${uberJarStagingDir}/war/WEB-INF/classes"
+	include 'pygmymarmoset.properties'
+
+	// make sure there actually was a configuration properties file to copy
+	if (inputs.sourceFiles.empty)
+		throw new StopExecutionException("No pygmymarmoset.properties found")
+}
+
+
+// Copy the Log4j2 properties
+task copyLog4j2Properties(type: Copy) {
+	from rootProject.projectDir
+	into uberJarStagingDir
+	include 'log4j2.properties'
+
+	// make sure there actually was a log4j2.properties file to copy
+	if (inputs.sourceFiles.empty)
+		throw new StopExecutionException("No log4j2.properties found")
+}
+
+
+task clean(type: Delete) {
+	delete rootProject.buildDir
+}
+
+
+subprojects {
+	group = 'edu.ycp.cs.pygmymarmoset'
+	apply plugin: 'java'
+
+	java {
+		sourceCompatibility = JavaVersion.VERSION_17
+		targetCompatibility = JavaVersion.VERSION_17
+	}
+
+	repositories {
+		mavenCentral()
+		maven { url 'https://jitpack.io' }
+	}
+
+	// run with: gradle allDeps
+	task allDeps(type: DependencyReportTask) {}
+
+	ext {
+		jetty_version = '9.4.51.v20230217'
+		javax_servlet_version = '4.0.1'
+		javax_servlet_jsp_version = '2.3.3'
+		guava_version = '32.1.2-jre'
+		jackson_version = '2.15.2'
+		javassist_version = '3.29.2-GA'
+		mortbay_version = '9.0.52'
+
+		commons_beanutils_version = '1.9.4'
+		commons_io_version = '2.13.0'
+		commons_text_version = '1.10.0'
+		commons_lang3_version = '3.13.0'
+		commons_csv_version = '1.10.0'
+		daemon_version = '0.8'
+		reflections_version = '0.10.2'
+		taglibs_version = '1.2.5'
+		mariadb_java_client_version = '3.1.4'
+
+		slf4j_version = '2.0.7'
+		log4j_version = '2.20.0'
+	}
+}

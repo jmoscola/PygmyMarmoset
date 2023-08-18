@@ -3,38 +3,15 @@ plugins {
 }
 
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-}
-
-
-group = 'edu.ycp.cs.pygmymarmoset'
-
-
-repositories {
-    mavenCentral()
-}
-
-
-ext {
-	commons_csv_version = '1.10.0'
-    commons_io_version = '2.13.0'
-
-    slf4j_version = '2.0.7'
-    log4j_version = '2.20.0'
-}
-
-
 dependencies {
 	implementation project(':PygmyMarmosetModelClasses')
 	implementation project(':PygmyMarmosetPersistence')
-	implementation group: 'org.apache.commons', name: 'commons-csv', version: "$commons_csv_version"
-	implementation group: 'commons-io', name: 'commons-io', version: "$commons_io_version"
-
-	implementation group: 'org.slf4j', name: 'slf4j-api', version: "$slf4j_version"
+	implementation group: 'org.apache.commons', name: 'commons-csv', version: "$commons_csv_version", transitive: false
+	implementation group: 'commons-io', name: 'commons-io', version: "$commons_io_version", transitive: false
+	implementation group: 'org.slf4j', name: 'slf4j-api', version: "$slf4j_version", transitive: false
+	
 	implementation group: 'org.slf4j', name: 'jcl-over-slf4j', version: "$slf4j_version"
 	implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: "$log4j_version"
 	implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: "$log4j_version"
-	implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: "$log4j_version"
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j2-impl', version: "$log4j_version"
 }

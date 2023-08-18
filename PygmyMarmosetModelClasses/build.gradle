@@ -4,20 +4,6 @@ plugins {
 }
 
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-}
-
-
-group = 'edu.ycp.cs.pygmymarmoset'
-
-
-repositories {
-    mavenCentral()
-}
-
-
 // To execute 'main': gradle -q run
 application {
 	mainClass = 'edu.ycp.cs.pygmymarmoset.app.model.introspect.Introspect'

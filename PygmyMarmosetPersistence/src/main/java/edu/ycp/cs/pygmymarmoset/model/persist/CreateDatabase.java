@@ -24,18 +24,17 @@ import org.slf4j.LoggerFactory;
 
 public class CreateDatabase {
 	private static final Logger logger = LoggerFactory.getLogger(CreateDatabase.class);
-
+	
     public static void main(String[] args) throws Exception {
+		logger.info("Creating database...");	
 
-		logger.info("Creating database...");
-		
 		Scanner keyboard = new Scanner(System.in);
-
 		System.out.println("Please enter details for initial user account");
 		String username = ConfigurationUtil.ask(keyboard, "Enter username:");
 		String firstName = ConfigurationUtil.ask(keyboard, "Enter first name:");
 		String lastName = ConfigurationUtil.ask(keyboard, "Enter last name:");
 		String passwd = ConfigurationUtil.ask(keyboard, "Enter password:");
+		keyboard.close();
 
 		IDatabase db = DatabaseProvider.getInstance();
 

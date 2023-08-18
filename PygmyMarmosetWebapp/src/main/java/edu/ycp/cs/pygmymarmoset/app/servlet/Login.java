@@ -16,8 +16,12 @@ import edu.ycp.cs.pygmymarmoset.app.model.ErrorMessage;
 import edu.ycp.cs.pygmymarmoset.app.model.LoginCredentials;
 import edu.ycp.cs.pygmymarmoset.app.model.User;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Route(pattern="/login", view="/_view/login.jsp")
 public class Login extends AbstractFormServlet {
+	private static final Logger logger = LoggerFactory.getLogger(Login.class);
 	private static final long serialVersionUID = 1L;
 	
 	@Override
@@ -32,6 +36,10 @@ public class Login extends AbstractFormServlet {
 		LoginController controller = new LoginController();
 		User user = controller.execute(creds);
 		if (user != null) {
+			if (user.isSuperUser()) {
+				logger.info("Superuser {} logged in", user.getUsername());
+			}
+		
 			// Successful login.  Put user in session and redirect to
 			// goal URL (if there is one) or the index page.
 			req.getSession().setAttribute("user", user);
