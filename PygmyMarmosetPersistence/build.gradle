@@ -11,10 +11,10 @@ dependencies {
 	implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: "$mariadb_java_client_version", transitive: false
 	
 	implementation group: 'org.slf4j', name: 'slf4j-api', version: "$slf4j_version", transitive: false
-	implementation group: 'org.slf4j', name: 'jcl-over-slf4j', version: "$slf4j_version"
-	implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: "$log4j_version"
-	implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: "$log4j_version"
-	implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j2-impl', version: "$log4j_version"
+	implementation group: 'org.slf4j', name: 'jcl-over-slf4j', version: "$slf4j_version", transitive: false
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: "$log4j_version", transitive: false
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: "$log4j_version", transitive: false
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j2-impl', version: "$log4j_version", transitive: false
 }
 
 
