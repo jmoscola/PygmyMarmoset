@@ -3,12 +3,42 @@ plugins {
 }
 
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-}
-
-
 dependencies {
-	implementation files(eclipseClasspath(project))
+	implementation group: 'org.eclipse.jetty', name: 'jetty-server', version: "$jetty_version"
+	implementation group: 'org.eclipse.jetty', name: 'jetty-jmx', version: "$jetty_version"
+	implementation group: 'org.eclipse.jetty', name: 'jetty-util', version: "$jetty_version"
+	implementation group: 'org.eclipse.jetty', name: 'jetty-webapp', version: "$jetty_version"
+	implementation group: 'org.eclipse.jetty', name: 'jetty-servlet', version: "$jetty_version"
+	implementation group: 'org.eclipse.jetty', name: 'jetty-http', version: "$jetty_version"
+	implementation group: 'org.eclipse.jetty', name: 'jetty-io', version: "$jetty_version"	
+	implementation group: 'org.eclipse.jetty', name: 'jetty-security', version: "$jetty_version"
+	implementation group: 'org.eclipse.jetty', name: 'jetty-annotations', version: "$jetty_version"
+	implementation group: 'org.eclipse.jetty', name: 'jetty-xml', version: "$jetty_version"
+	implementation group: 'org.eclipse.jetty', name: 'jetty-plus', version: "$jetty_version"
+	implementation group: 'org.eclipse.jetty', name: 'apache-jsp', version: "$jetty_version"
+
+	implementation group: 'org.eclipse.jetty.toolchain', name: 'jetty-schemas', version: "$jetty_schemas_version"
+	implementation group: 'org.eclipse.jdt.core.compiler', name: 'ecj', version: "$ecj_version"
+	implementation group: 'javax.servlet', name: 'javax.servlet-api', version: "$javax_servlet_version"
+	implementation group: 'javax.annotation', name: 'javax.annotation-api', version: "$javax_annotation_api_version"
+
+	implementation group: 'org.mortbay.jasper', name: 'apache-jsp', version: "$mortbay_version"
+	implementation group: 'org.mortbay.jasper', name: 'apache-el', version: "$mortbay_version"
+
+	implementation group: 'org.apache.taglibs', name: 'taglibs-standard-impl', version: "$taglibs_version"
+	implementation group: 'org.apache.taglibs', name: 'taglibs-standard-spec', version: "$taglibs_version"
+
+	implementation group: 'org.ow2.asm', name: 'asm', version: "$asm_version"
+	implementation group: 'org.ow2.asm', name: 'asm-commons', version: "$asm_version"
+	implementation group: 'org.ow2.asm', name: 'asm-tree', version: "$asm_version"
+	
+	implementation group: 'commons-io', name: 'commons-io', version: "$commons_io_version"
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: "$commons_lang3_version"
+	implementation group: 'com.github.daveho', name: 'daemon', version: "$daemon_version"
+
+	implementation group: 'org.slf4j', name: 'slf4j-api', version: "$slf4j_version", transitive: false
+	implementation group: 'org.slf4j', name: 'jcl-over-slf4j', version: "$slf4j_version", transitive: false
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: "$log4j_version", transitive: false
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: "$log4j_version", transitive: false
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j2-impl', version: "$log4j_version", transitive: false
 }

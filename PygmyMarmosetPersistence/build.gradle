@@ -1,20 +1,30 @@
 plugins {
 	id 'java'
-}
-
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+	id 'application'
 }
 
 
 dependencies {
-	implementation project(path: ':PygmyMarmosetModelClasses')
-	implementation files(eclipseClasspath(project))
+	implementation project(':PygmyMarmosetModelClasses')
+	implementation group: 'commons-beanutils', name: 'commons-beanutils', version: "$commons_beanutils_version", transitive: false
+	implementation group: 'commons-io', name: 'commons-io', version: "$commons_io_version", transitive: false
+	implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: "$mariadb_java_client_version", transitive: false
+	
+	implementation group: 'org.slf4j', name: 'slf4j-api', version: "$slf4j_version", transitive: false
+	implementation group: 'org.slf4j', name: 'jcl-over-slf4j', version: "$slf4j_version", transitive: false
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: "$log4j_version", transitive: false
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: "$log4j_version", transitive: false
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j2-impl', version: "$log4j_version", transitive: false
 }
 
 
 jar {
 	exclude 'pygmymarmoset.properties'
+}
+
+
+// To execute 'main': gradle -q run
+application {
+	mainClass = 'edu.ycp.cs.pygmymarmoset.model.persist.Query'
+//	mainClass = 'edu.ycp.cs.pygmymarmoset.model.persist.CreateDatabase'
 }

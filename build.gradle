@@ -1,231 +1,143 @@
 // PygmyMarmoset gradle build script
-
 ///////////////////////////////////////////////////////////////////////
 // Tasks
 ///////////////////////////////////////////////////////////////////////
 
-task uberJar(
+def uberJarStagingDir = "${rootProject.buildDir}/uberJarStaging"
+
+
+task uberJar (
 	type: Jar,
 	dependsOn: [
-		':copyWebappClasses',
-		':copyConfigProperties',
-		':copyLog4j2Properties',
-		':copyWebappWebinf',
 		':copyWebappFiles',
-		':copyWebappJars',
 		':copyLauncherFiles',
-		':copyJettyDeps']) {
+		':copyLauncherDeps',
+		':copyConfigProperties',
+		':copyLog4j2Properties'
+		]) {
 	manifest {
 		attributes ([
-			'Main-Class' : 'edu.ycp.cs.pygmymarmoset.main.UberjarMain',
-			'Multi-Release' : 'true'
-        ])
+				'Main-Class' : 'edu.ycp.cs.pygmymarmoset.main.UberjarMain',
+				'Multi-Release' : 'true'
+		])
 	}
-    destinationDirectory = layout.buildDirectory.dir('.')
-	archiveBaseName = 'pygmyMarmosetApp'
-	from 'build/uberJarStaging'
+	destinationDirectory = layout.buildDirectory.dir('.')
+	archiveBaseName = project.name
+	from uberJarStagingDir
 }
 
-// Copy all web app classes and resources into the uberjar staging area.
-task copyWebappClasses(
-	type: Copy,
-	dependsOn: [
-		':copyWebappProjectJars', // ensures depended-on classes are available
-		':PygmyMarmosetWebapp:compileJava'
-	]){
-	from 'PygmyMarmosetWebapp/build/classes/java/main'
-	into 'build/uberJarStaging/war/WEB-INF/classes'
-	exclude "pygmymarmoset.properties"
+
+task copyWebappFiles (type: Copy, dependsOn: [ ':PygmyMarmosetWebapp:war' ]) {
+	project(':PygmyMarmosetWebapp').afterEvaluate {
+		def PygmyMarmosetWebappLib = project(':PygmyMarmosetWebapp').base.getLibsDirectory().getAsFile().get()
+		from zipTree("${PygmyMarmosetWebappLib}/PygmyMarmosetWebapp.war")
+		into "$uberJarStagingDir/war"
+		exclude	'META-INF/**'
+		duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+	}
 }
 
-task buildModelClassesJar(dependsOn: [':PygmyMarmosetModelClasses:jar']) { }
 
-task buildPersistenceJar(dependsOn: [':buildModelClassesJar', ':PygmyMarmosetPersistence:jar']) {
-	// persistence jar can't be built until model classes jar is built
-	mustRunAfter ':buildModelClassesJar'
+task copyLauncherFiles (type: Copy, dependsOn: [ ':PygmyMarmosetLauncher:compileJava' ]) {
+	project(':PygmyMarmosetLauncher').afterEvaluate {
+		from project(':PygmyMarmosetLauncher').sourceSets.main.output.classesDirs
+		into uberJarStagingDir
+		duplicatesStrategy = DuplicatesStrategy.WARN
+	}
 }
 
-task buildControllersJar(dependsOn: [':buildPersistenceJar', ':PygmyMarmosetControllers:jar']) {
-	// controllers jar can't be built until persistence jar is built
-	mustRunAfter ':buildPersistenceJar'
+
+task copyLauncherDeps (type: Copy, dependsOn: [ ':PygmyMarmosetLauncher:compileJava' ]) {
+	project(':PygmyMarmosetLauncher').afterEvaluate {
+		from project(':PygmyMarmosetLauncher').configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+		into uberJarStagingDir
+		exclude(
+				'about*',
+				'**/*.java',
+				'module-info.class',
+				'META-INF/*.SF',
+				'META-INF/*.DSA',
+				'META-INF/*.RSA',
+				'META-INF/DEPENDENCIES*',
+				'META-INF/*.tld',
+				'META-INF/MANIFEST.MF',
+				'META-INF/LICENSE*',
+				'META-INF/NOTICE*',
+				'META-INF/versions/9/module-info.class'
+		)
+		duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+	}
 }
 
-// Copy jars of projects depended on by the webapp into the uberjar
-// staging area.
-task copyWebappProjectJars(
-	type: Copy,
-	dependsOn: [
-		':buildControllersJar' // ensures model classes and persistence jars are built too
-	]) {
-	from 'PygmyMarmosetModelClasses/build/libs', 'PygmyMarmosetPersistence/build/libs',
-					'PygmyMarmosetControllers/build/libs'
-	into 'build/uberJarStaging/war/WEB-INF/lib'
-	include '*.jar'
-}
 
 // Copy the configuration properties
 task copyConfigProperties(type: Copy) {
-	from project.projectDir
-	into 'build/uberJarStaging/war/WEB-INF/classes'
+	from rootProject.projectDir
+	into "${uberJarStagingDir}/war/WEB-INF/classes"
 	include 'pygmymarmoset.properties'
-	
+
 	// make sure there actually was a configuration properties file to copy
 	if (inputs.sourceFiles.empty)
 		throw new StopExecutionException("No pygmymarmoset.properties found")
 }
 
+
 // Copy the Log4j2 properties
 task copyLog4j2Properties(type: Copy) {
-	from project.projectDir
-	into 'build/uberJarStaging'
+	from rootProject.projectDir
+	into uberJarStagingDir
 	include 'log4j2.properties'
-	
+
 	// make sure there actually was a log4j2.properties file to copy
 	if (inputs.sourceFiles.empty)
 		throw new StopExecutionException("No log4j2.properties found")
 }
 
-// Copy the non-class and non-jar files in the webapp's WEB-INF
-// into the uberjar staging area.
-task copyWebappWebinf(type: Copy) {
-	from 'PygmyMarmosetWebapp/war/WEB-INF'
-	into 'build/uberJarStaging/war/WEB-INF'
-	exclude 'classes/**', 'lib/**'
-}
-
-// Copy all other webapp files, such as JSPs, images, js, css, etc.
-// into the uberjar staging area.
-task copyWebappFiles(type: Copy, dependsOn: [':copyJstlTldFiles', ':copyJstlClassFiles']) {
-	from 'PygmyMarmosetWebapp/war'
-	into 'build/uberJarStaging/war'
-	exclude 'WEB-INF/**'
-}
-
-// Copy all of the webapp's runtime jar files
-// into the uberjar staging area.
-task copyWebappJars(type: Copy) {
-	from 'PygmyMarmosetWebapp/war/WEB-INF/lib'
-	into 'build/uberJarStaging/war/WEB-INF/lib'
-}
-
-// Copy the launcher program classfiles into the uberjar staging area.
-task copyLauncherFiles(type: Copy, dependsOn: [':PygmyMarmosetLauncher:compileJava']) {
-	from 'PygmyMarmosetLauncher/build/classes/java/main'
-	into 'build/uberJarStaging'
-}
-
-// Copy all of the contents of the Jetty jarfiles into the uberjar staging area.
-task copyJettyDeps(type: Copy) {
-	duplicatesStrategy = 'WARN'
-	from requiredJars(project(':PygmyMarmosetLauncher')).collect { zipTree(it) }
-	into 'build/uberJarStaging'
-	exclude(
-            'module-info.class',
-            'about*',
-            'META-INF/DEPENDENCIES*',
-            'META-INF/MANIFEST.MF',
-            'META-INF/versions/9/module-info.class'
-        )
-}
-
-// Note: the following targets copy the .tld files and classfiles
-// for Apache JSTL into the webapp.  Getting them to resolve
-// correctly when running from the uberjar is complicated and
-// would involve classloader hacks.  This solution is easy
-// and works.
-
-task explodeJstl(type: Copy) {
-	from zipTree('Jetty9/lib/apache-jstl/taglibs-standard-impl-1.2.5.jar')
-	into 'build/apache-jstl'
-}
-
-task copyJstlTldFiles(type: Copy, dependsOn: [':explodeJstl']) {
-	from 'build/apache-jstl/META-INF'
-	into 'build/uberJarStaging/war/WEB-INF'
-	include '*.tld'
-}
-
-task copyJstlClassFiles(type: Copy, dependsOn: [':explodeJstl']) {
-	from 'build/apache-jstl'
-	into 'build/uberJarStaging/war/WEB-INF/classes'
-	include 'org/**'
-}
 
 task clean(type: Delete) {
-    delete rootProject.buildDir
-} 
-
-
-///////////////////////////////////////////////////////////////////////
-// Common methods
-///////////////////////////////////////////////////////////////////////
-
-// Read an Eclipse classpath and return a list of jarfiles
-// and directories.  See:
-//   http://stackoverflow.com/questions/31653796
-// I improved the basic technique so that referenced projects
-// are added to the classpath correctly.
-// WARNING: if there are projects with circular dependencies
-// this method will execute an infinite recursion.
-def parseEclipseClasspath(classpathFile, exportsOnly) {
-	def baseDir = classpathFile.parentFile
-	
-	//println "classpathFile=${classpathFile}"
-	def cpXml = new XmlParser().parse(classpathFile)
-	def libPaths = []
-	def addOutput = false
-	def outputDir
-	cpXml.classpathentry.each {
-		if ('lib' == it.@kind) {
-			// reference to jarfile
-			def libPath = it.@path
-			if (libPath.startsWith("/") && !exportsOnly) {
-				// Jar file from another project: is referenced relative
-				// to parent directory
-				def parentDir = baseDir.parentFile.absolutePath
-				libPaths.add(parentDir + libPath)
-			} else {
-				// Jar file is internal to this project
-				def isExport = it.@exported == 'true'
-				if (isExport || !exportsOnly) {
-					libPaths.add(baseDir.path + '/' + libPath)
-				}
-			}
-		} else if ('src' == it.@kind && !it.@path.startsWith('/') && exportsOnly) {
-			// reference to source directory of depended-on project:
-			// make a note to add the output directory
-			addOutput = true
-		} else if ('src' == it.@kind && it.@path.startsWith('/')) {
-			// reference to project
-			//println "Adding recursive dependencies from ${it.@path}"
-			def refProjBase = new File(baseDir.path + '/..' + it.@path).canonicalPath
-			//println "refProjBase=${refProjBase}"
-			def refLibPaths = parseEclipseClasspath(new File(refProjBase + '/.classpath'), true)
-			libPaths.addAll(refLibPaths)
-		} else if ('output' == it.@kind) {
-			outputDir = baseDir.path + '/' + it.@path
-		}
-	}
-	
-	if (addOutput) {
-		// Add the output directory (i.e., compiled classfiles for this project)
-		libPaths.add(outputDir)
-	}
-	
-	return libPaths
+	delete rootProject.buildDir
 }
 
-// Get compile-time dependencies for specified project
-def eclipseClasspath(p) {
-	def baseDir = p.projectDir.absolutePath
-	def classpathFile = new File(baseDir, '.classpath')
-	//println "baseDir=${baseDir}"
-	return parseEclipseClasspath(classpathFile, false)
-}
 
-// Get just the required jars for a project
-def requiredJars(p) {
-	return eclipseClasspath(p).findAll {
-		it.endsWith('.jar')
+subprojects {
+	group = 'edu.ycp.cs.pygmymarmoset'
+	apply plugin: 'java'
+
+	java {
+		sourceCompatibility = JavaVersion.VERSION_17
+		targetCompatibility = JavaVersion.VERSION_17
+	}
+
+	repositories {
+		mavenCentral()
+		maven { url 'https://jitpack.io' }
+	}
+
+	// run with: gradle allDeps
+	task allDeps(type: DependencyReportTask) {}
+
+	ext {
+		jetty_version = '9.4.51.v20230217'
+		jetty_schemas_version = '3.1.2'
+		ecj_version = '4.6.1'
+		javax_servlet_version = '4.0.1'
+		javax_annotation_api_version = '1.3.2'
+		mortbay_version = '9.0.52'
+		taglibs_version = '1.2.5'
+		asm_version = '9.5'		
+		javax_servlet_jsp_version = '2.3.3'
+		guava_version = '32.1.2-jre'
+		jackson_version = '2.15.2'
+		javassist_version = '3.29.2-GA'
+		commons_beanutils_version = '1.9.4'
+		commons_io_version = '2.13.0'
+		commons_text_version = '1.10.0'
+		commons_lang3_version = '3.13.0'
+		commons_csv_version = '1.10.0'
+		daemon_version = '0.8'
+		reflections_version = '0.10.2'
+		mariadb_java_client_version = '3.1.4'
+		slf4j_version = '2.0.7'
+		log4j_version = '2.20.0'
 	}
 }

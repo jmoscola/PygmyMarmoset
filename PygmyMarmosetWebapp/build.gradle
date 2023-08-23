@@ -1,17 +1,51 @@
 plugins {
 	id 'java'
-}
-
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+	id 'war'
 }
 
 
 dependencies {
-	implementation project(path: ':PygmyMarmosetModelClasses')
-	implementation project(path: ':PygmyMarmosetPersistence')
-	implementation project(path: ':PygmyMarmosetControllers')
-	implementation files(eclipseClasspath(project))
+	implementation project(':PygmyMarmosetModelClasses')
+	implementation project(':PygmyMarmosetPersistence')
+	implementation project(':PygmyMarmosetControllers')
+
+	implementation group: 'commons-beanutils', name: 'commons-beanutils', version: "$commons_beanutils_version", transitive: false
+	implementation group: 'commons-io', name: 'commons-io', version: "$commons_io_version", transitive: false
+	implementation group: 'org.apache.commons', name: 'commons-text', version: "$commons_text_version", transitive: false
+	implementation group: 'com.google.guava', name: 'guava', version: "$guava_version", transitive: false
+
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: "$jackson_version"
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: "$jackson_version", transitive: false
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: "$jackson_version", transitive: false
+
+	implementation group: 'org.javassist', name: 'javassist', version: "$javassist_version", transitive: false
+
+	implementation group: 'org.reflections', name: 'reflections', version: "$reflections_version", transitive: false
+	implementation group: 'org.apache.taglibs', name: 'taglibs-standard-impl', version: "$taglibs_version", transitive: false
+	implementation group: 'org.apache.taglibs', name: 'taglibs-standard-spec', version: "$taglibs_version", transitive: false
+	
+	compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: "$javax_servlet_version"
+	compileOnly group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: "$javax_servlet_jsp_version"
+
+	implementation group: 'org.slf4j', name: 'slf4j-api', version: "$slf4j_version", transitive: false
+	implementation group: 'org.slf4j', name: 'jcl-over-slf4j', version: "$slf4j_version", transitive: false
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: "$log4j_version", transitive: false
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: "$log4j_version", transitive: false
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j2-impl', version: "$log4j_version", transitive: false
+}
+
+
+jar {
+	enabled = false
+}
+
+
+war {
+	webAppDirectory = file('war')
+}
+
+
+task explodeWar(type: Copy) {
+	from zipTree("${buildDir}/libs/PygmyMarmosetWebapp.war")
+	into 'build/war'
 }

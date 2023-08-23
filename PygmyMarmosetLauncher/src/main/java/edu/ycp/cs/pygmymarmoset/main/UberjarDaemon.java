@@ -57,6 +57,8 @@ public class UberjarDaemon implements IDaemon {
 		// If Jetty creates its temporary webapp directory in
 		// /tmp, bad stuff happens if static resources or code
 		// get modified.
+		logger.info("Preparing to launch Jetty server.");
+		
 		try {
 			String path = "./" + instanceName + "-tmp-" + Util.getPid();
 			File tmpdir = new File(path);
@@ -119,6 +121,8 @@ public class UberjarDaemon implements IDaemon {
 	@Override
 	public void shutdown() {
 		// Shut down Jetty and wait for it to exit
+		logger.info("Preparing to shutdown Jetty server.");
+		
 		try {
 			server.stop();
 			server.join();

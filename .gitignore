@@ -18,6 +18,7 @@ org.eclipse.jdt.ui.prefs
 ##########################
 # root directory ignores
 ##########################
+/_RELEASES
 /deps
 /instance.pid
 /log.txt

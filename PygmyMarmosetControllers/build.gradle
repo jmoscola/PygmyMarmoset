@@ -3,14 +3,15 @@ plugins {
 }
 
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-}
-
-
 dependencies {
-	implementation project(path: ':PygmyMarmosetModelClasses')
-	implementation project(path: ':PygmyMarmosetPersistence')
-	implementation files(eclipseClasspath(project))
+	implementation project(':PygmyMarmosetModelClasses')
+	implementation project(':PygmyMarmosetPersistence')
+	implementation group: 'org.apache.commons', name: 'commons-csv', version: "$commons_csv_version", transitive: false
+	implementation group: 'commons-io', name: 'commons-io', version: "$commons_io_version", transitive: false
+	
+	implementation group: 'org.slf4j', name: 'slf4j-api', version: "$slf4j_version", transitive: false
+	implementation group: 'org.slf4j', name: 'jcl-over-slf4j', version: "$slf4j_version", transitive: false
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: "$log4j_version", transitive: false
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: "$log4j_version", transitive: false
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j2-impl', version: "$log4j_version", transitive: false
 }
