@@ -74,7 +74,7 @@ public class RequireStudent extends AbstractLoginFilter implements Filter {
 			}
 		}
 		
-		System.out.printf("User id=%d, student id=%d\n", user.getId(), student.getId());
+		// System.out.printf("User id=%d, student id=%d\n", user.getId(), student.getId());
 		
 		req.setAttribute("student", student);
 		req.setAttribute("studentRoles", studentRoles);

@@ -46,6 +46,6 @@ war {
 
 
 task explodeWar(type: Copy) {
-	from zipTree("${buildDir}/libs/PygmyMarmosetWebapp.war")
+	from zipTree("${layout.buildDirectory}/libs/PygmyMarmosetWebapp.war")
 	into 'build/war'
 }

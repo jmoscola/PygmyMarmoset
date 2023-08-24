@@ -11,9 +11,6 @@ public class ModelObjectUtil {
 		if (obj == null) {
 			return false;
 		}
-		if (obj instanceof String && ((String)obj).trim().equals("")) {
-			return false;
-		}
-		return true;
-	}
+        return !(obj instanceof String) || !((String) obj).trim().equals("");
+    }
 }

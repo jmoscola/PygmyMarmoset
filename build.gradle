@@ -3,17 +3,17 @@
 // Tasks
 ///////////////////////////////////////////////////////////////////////
 
-def uberJarStagingDir = "${rootProject.buildDir}/uberJarStaging"
+def uberJarStagingDir = "${rootProject.layout.buildDirectory.get()}/uberJarStaging"
 
 
 task uberJar (
-	type: Jar,
-	dependsOn: [
-		':copyWebappFiles',
-		':copyLauncherFiles',
-		':copyLauncherDeps',
-		':copyConfigProperties',
-		':copyLog4j2Properties'
+		type: Jar,
+		dependsOn: [
+				':copyWebappFiles',
+				':copyLauncherFiles',
+				':copyLauncherDeps',
+				':copyConfigProperties',
+				':copyLog4j2Properties'
 		]) {
 	manifest {
 		attributes ([
@@ -21,8 +21,8 @@ task uberJar (
 				'Multi-Release' : 'true'
 		])
 	}
-	destinationDirectory = layout.buildDirectory.dir('.')
-	archiveBaseName = project.name
+	destinationDirectory = rootProject.layout.buildDirectory.dir('.')
+	archiveBaseName = rootProject.project.name
 	from uberJarStagingDir
 }
 
@@ -95,7 +95,7 @@ task copyLog4j2Properties(type: Copy) {
 
 
 task clean(type: Delete) {
-	delete rootProject.buildDir
+	delete rootProject.layout.buildDirectory
 }
 
 
@@ -124,7 +124,7 @@ subprojects {
 		javax_annotation_api_version = '1.3.2'
 		mortbay_version = '9.0.52'
 		taglibs_version = '1.2.5'
-		asm_version = '9.5'		
+		asm_version = '9.5'
 		javax_servlet_jsp_version = '2.3.3'
 		guava_version = '32.1.2-jre'
 		jackson_version = '2.15.2'
