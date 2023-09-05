@@ -25,6 +25,6 @@ jar {
 
 // To execute 'main': gradle -q run
 application {
-//	mainClass = 'edu.ycp.cs.pygmymarmoset.model.persist.Query'
-	mainClass = 'edu.ycp.cs.pygmymarmoset.model.persist.CreateDatabase'
+	mainClass = 'edu.ycp.cs.pygmymarmoset.model.persist.Query'
+//	mainClass = 'edu.ycp.cs.pygmymarmoset.model.persist.CreateDatabase'
 }

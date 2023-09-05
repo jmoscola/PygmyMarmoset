@@ -52,9 +52,9 @@ public class Launcher {
 		if (fromEclipse) {
 			// Set up "extra" classpath directories/jarfiles from referenced
 			// Eclipse projects.  When launching from the uberjar, these
-			// aren't needed because all of the required classes are
+			// aren't needed because all of required classes are
 			// contained in the webapp's WEB-INF/classes directory.
-			webapp.setExtraClasspath("../PygmyMarmosetModelClasses/bin/,../PygmyMarmosetPersistence/bin/,../PygmyMarmosetControllers/bin/");
+			webapp.setExtraClasspath("../PygmyMarmosetModelClasses/build/libs/,../PygmyMarmosetPersistence/build/libs/,../PygmyMarmosetControllers/build/libs/");
 		}
 		
 		server.setHandler(webapp);
