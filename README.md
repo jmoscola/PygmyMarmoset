@@ -158,7 +158,6 @@ In the file that opens, copy and paste the following **cron job** settings. Thes
 ```conf
 # Poke Pygmy Marmoset every 5 minutes
 */5 * * * * cd /web/marmoset/webapp && [ ! -e nopoke ] && (java -jar pygmyMarmosetApp.jar poke >> logs/poke.log 2>&1)
-
 ```
 
 
