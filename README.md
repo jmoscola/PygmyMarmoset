@@ -29,7 +29,7 @@ You will need JDK 17 (or higher?).
 For example, on Oracle Linux run the following commands:
 
 ```bash
-sudo dnf install mariadb-server
+sudo dnf -y install mariadb-server
 sudo systemctl enable --now mariadb
 ```
 
@@ -64,13 +64,19 @@ quit;
 
 ### Part 2: Build Pygmy Marmoset and Create DB Tables
 
-**1**. Download the Pygmy Marmoset code or clone this git repo.
+**1**. Install JDK 17.
+
+```bash
+sudo dnf -y install java-17-openjdk.x86_64
+```
+
+**2**. Download the Pygmy Marmoset code or clone this git repo.
 
 ```bash
 git clone https://github.com/jmoscola/PygmyMarmoset.git
 ```
 
-**2**. In the top-level `PygmyMarmoset` directory (after cloning the repo), create a file called `pygmymarmoset.properties` with the following properties:
+**3**. In the top-level `PygmyMarmoset` directory (after cloning the repo), create a file called `pygmymarmoset.properties` with the following properties:
 
 * `pm.db.host`: the hostname of the database server
 * `pm.db.user`: the MariaDB username the webapp will use to connect to the database
@@ -88,7 +94,7 @@ pm.db.name=pygmymarmosetdb
 
 This example configuration assumes that the MariaDB server is on the same server as the Pygmy Marmoset webapp (hence `localhost` as the value of `pm.db.host`).
 
-**3**. From the top-level PygmyMarmoset directory, run the command:
+**4**. From the top-level PygmyMarmoset directory, run the command:
 
 ```bash
 ./gradlew uberJar
@@ -96,7 +102,7 @@ This example configuration assumes that the MariaDB server is on the same server
 
 This will install the [Gradle](https://gradle.org/) build tool, download all the required dependencies and build the web application.  After a successful build, the file `build/pygmyMarmosetApp.jar` is the executable webapp jar file.
 
-**4**. From the top-level PygmyMarmoset directory, run the following command to create the required database tables and the initial Pygmy Marmoset user account.
+**5**. From the top-level PygmyMarmoset directory, run the following command to create the required database tables and the initial Pygmy Marmoset user account.
 
 ```bash
 java -jar ./build/pygmyMarmosetApp.jar createdb
