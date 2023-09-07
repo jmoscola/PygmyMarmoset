@@ -64,7 +64,7 @@ quit;
 
 ### Part 2: Build Pygmy Marmoset and Create DB Tables
 
-**1**. Install JDK 17.
+**1**. Install JDK 17. **Note,** the following command assumes you're running on an **x86_64** processor.  If that's not the case, install the JDK that is appropriate for your system.
 
 ```bash
 sudo dnf -y install java-17-openjdk.x86_64
@@ -170,8 +170,8 @@ In the file that opens, copy and paste the following **cron job** settings. Thes
 **6 (a)**. **[OPTIONAL]** By default, the webapp listens for connections on `localhost:8080`. You will almost certainly want to set up Apache 2 or nginx to act as a reverse proxy. This will allow for secure connections via HTTPS.  For example, to install and run Apache 2 on Oracle Linux, run the following commands:
 
 ```bash
-sudo dnf install httpd
-sudo dnf install mod_ssl
+sudo dnf -y install httpd
+sudo dnf -y install mod_ssl
 sudo setsebool httpd_can_network_connect 1
 sudo systemctl enable --now httpd.service
 ```
@@ -181,15 +181,15 @@ sudo systemctl enable --now httpd.service
 **6 (c)**. **[OPTIONAL]** As an `admin` create and edit a custom Apache configuration file with settings to handle HTTPS and forwarding from HTTP to HTTPS.  For example, on Oracle Linux:
 
 ```bash
-sudo vi /etc/httpd/conf.d/example.school.edu.conf
+sudo vi /etc/httpd/conf.d/localhost.conf
 ```
-Below is an example configuration file.  Note that you'll need to acquire and install the required SSL certificates. Replace the values for `SSLCertificateFile`, `SSLCertificateKeyFile`, and `SSLCertificateChainFile` as appropriate for your SSL configuration.
+Below is an example configuration file.  Note that you'll need to replace all instances of `127.0.0.1` with your server's name. You'll also need to acquire and install the required SSL certificates. Replace the default values for `SSLCertificateFile`, `SSLCertificateKeyFile`, and `SSLCertificateChainFile` as appropriate for your SSL configuration.
 ```conf
 ##################################################
 <VirtualHost *:80>
-ServerName example.school.edu
+ServerName 127.0.0.1
 
-Redirect "/marmoset" "https://example.school.edu/marmoset"
+Redirect "/marmoset" "https://127.0.0.1/marmoset"
 
 ErrorLog logs/marmoset_http_error_log
 TransferLog logs/marmoset_http_access_log
@@ -197,20 +197,20 @@ LogLevel warn
 </VirtualHost>
 ##################################################
 <VirtualHost *:443>
-ServerName example.school.edu
+ServerName 127.0.0.1
 
 SSLEngine On
 SSLProxyEngine On
-SSLCertificateFile /etc/pki/tls/certs/example_school_edu_cert.cer
-SSLCertificateKeyFile /etc/pki/tls/private/server.key
-#SSLCertificateChainFile /etc/pki/tls/certs/chain.cer
+SSLCertificateFile /etc/pki/tls/certs/localhost.crt
+SSLCertificateKeyFile /etc/pki/tls/private/localhost.key
+#SSLCertificateChainFile /etc/pki/tls/certs/server-chain.crt
 
 # Transparently proxy requests for /marmoset to the Marmoset server
 ProxyPass /marmoset http://localhost:8080/marmoset
 ProxyPassReverse /marmoset http://localhost:8080/marmoset
 <Proxy http://localhost:8080/marmoset>
-Order Allow,Deny
-Allow from all
+    Order Allow,Deny
+    Allow from all
 </Proxy>
 
 ErrorLog logs/marmoset_http_error_log
@@ -226,7 +226,7 @@ LogLevel warn
 sudo systemctl restart httpd
 ```
 
-You should now be able to connect to your production instance of Pygmy Marmoset at https://servername/marmoset.
+You should now be able to connect to your production instance of Pygmy Marmoset at https://127.0.0.1/marmoset.
 
 
 **7**. To shut down your production instance of the Pygmy Marmoset server run the following command:
