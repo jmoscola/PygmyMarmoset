@@ -2,16 +2,14 @@ plugins {
 	id 'java'
 }
 
-
 dependencies {
 	implementation project(':PygmyMarmosetModelClasses')
 	implementation project(':PygmyMarmosetPersistence')
-	implementation group: 'org.apache.commons', name: 'commons-csv', version: "$commons_csv_version", transitive: false
-	implementation group: 'commons-io', name: 'commons-io', version: "$commons_io_version", transitive: false
-	
-	implementation group: 'org.slf4j', name: 'slf4j-api', version: "$slf4j_version", transitive: false
-	implementation group: 'org.slf4j', name: 'jcl-over-slf4j', version: "$slf4j_version", transitive: false
-	implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: "$log4j_version", transitive: false
-	implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: "$log4j_version", transitive: false
-	implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j2-impl', version: "$log4j_version", transitive: false
+	implementation("org.apache.commons:commons-csv:${commons_csv_version}") { transitive = false }
+	implementation("commons-io:commons-io:${commons_io_version}") { transitive = false }
+	implementation("org.slf4j:slf4j-api:${slf4j_version}") { transitive = false }
+	implementation("org.slf4j:jcl-over-slf4j:${slf4j_version}") { transitive = false }
+	implementation("org.apache.logging.log4j:log4j-core:${log4j_version}") { transitive = false }
+	implementation("org.apache.logging.log4j:log4j-api:${log4j_version}") { transitive = false }
+	implementation("org.apache.logging.log4j:log4j-slf4j2-impl:${log4j_version}") { transitive = false }
 }

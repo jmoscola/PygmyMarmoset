@@ -3,7 +3,6 @@ plugins {
 	id 'application'
 }
 
-
 // To execute 'main': gradle -q run
 application {
 	mainClass = 'edu.ycp.cs.pygmymarmoset.app.model.introspect.Introspect'
