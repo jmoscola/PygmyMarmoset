@@ -8,10 +8,8 @@ package edu.ycp.cs.pygmymarmoset.app.servlet;
 
 import java.io.IOException;
 import java.io.Serial;
-
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import edu.ycp.cs.pygmymarmoset.app.controller.LoginController;
 import edu.ycp.cs.pygmymarmoset.app.model.ErrorMessage;
 import edu.ycp.cs.pygmymarmoset.app.model.LoginCredentials;

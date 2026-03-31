@@ -6,7 +6,10 @@
 
 package edu.ycp.cs.pygmymarmoset.app.model;
 
+import java.io.Serial;
+
 public class ValidationException extends PygmyMarmosetException {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	public ValidationException(String msg) {

@@ -6,8 +6,11 @@
 
 package edu.ycp.cs.pygmymarmoset.app.servlet;
 
+import java.io.Serial;
+
 @Route(pattern="/i/download/*")
 public class InstDownloadSubmission extends AbstractDownloadServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	// logic implemented in superclass

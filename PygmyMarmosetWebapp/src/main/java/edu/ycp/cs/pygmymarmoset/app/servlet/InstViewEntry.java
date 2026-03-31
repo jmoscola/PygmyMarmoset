@@ -6,6 +6,8 @@
 
 package edu.ycp.cs.pygmymarmoset.app.servlet;
 
+import java.io.Serial;
+
 @Route(pattern="/i/entry/*", view="/_view/instViewEntry.jsp")
 @Navigation(parent=InstSubmission.class)
 @CrumbSpec(
@@ -13,6 +15,7 @@ package edu.ycp.cs.pygmymarmoset.app.servlet;
 		items={PathInfoItem.COURSE_ID, PathInfoItem.PROJECT_ID, PathInfoItem.STUDENT_ID,
 				PathInfoItem.SUBMISSION_ID, PathInfoItem.ENTRY_INDEX})
 public class InstViewEntry extends AbstractViewEntryServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	public InstViewEntry() {

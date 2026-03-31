@@ -202,4 +202,27 @@
 		<!-- Dynamically register all servlets, and add routes. -->
 		<listener-class>edu.ycp.cs.pygmymarmoset.app.servlet.RegisterServlets</listener-class>
 	</listener>
+
+
+	<!-- Generic error handling - never expose internal details -->
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/error.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>400</error-code>
+		<location>/error.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/error.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error.jsp</location>
+	</error-page>
 </web-app>

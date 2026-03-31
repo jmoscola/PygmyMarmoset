@@ -6,10 +6,13 @@
 
 package edu.ycp.cs.pygmymarmoset.app.servlet;
 
+import java.io.Serial;
+
 /**
  * Process username autocomplete suggestions for admin servlets.
  */
 @Route(pattern="/a/suggestUsernames/*")
 public class AdminSuggestUsernames extends AbstractSuggestUsernamesServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 }

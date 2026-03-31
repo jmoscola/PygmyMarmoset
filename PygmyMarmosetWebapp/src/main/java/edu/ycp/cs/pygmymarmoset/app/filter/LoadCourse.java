@@ -44,6 +44,12 @@ public class LoadCourse implements Filter {
 		
 		FindCourseController findCourse = new FindCourseController();
 		Pair<Course, Term> courseAndTerm = findCourse.execute(courseId);
+
+		if (courseAndTerm == null) {
+			ServletUtil.sendNotFound(req, (HttpServletResponse)resp_, "No such course");
+			return;
+		}
+
 		req.setAttribute("course", courseAndTerm.getFirst());
 		req.setAttribute("term", courseAndTerm.getSecond());
 		

@@ -8,8 +8,11 @@ package edu.ycp.cs.pygmymarmoset.app.servlet;
 
 import edu.ycp.cs.pygmymarmoset.app.model.GetSubmissionsMode;
 
+import java.io.Serial;
+
 @Route(pattern="/i/downloadOntime/*")
 public class InstDownloadOntime extends AbstractDownloadSubmissionsServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 	
 	public InstDownloadOntime() {
