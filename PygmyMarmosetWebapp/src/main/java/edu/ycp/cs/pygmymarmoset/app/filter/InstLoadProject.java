@@ -6,7 +6,7 @@
 
 package edu.ycp.cs.pygmymarmoset.app.filter;
 
-import javax.servlet.Filter;
+import jakarta.servlet.Filter;
 
 import edu.ycp.cs.pygmymarmoset.app.model.Project;
 

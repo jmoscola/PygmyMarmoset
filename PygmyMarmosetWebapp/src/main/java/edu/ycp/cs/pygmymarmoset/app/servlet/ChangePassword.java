@@ -8,8 +8,8 @@ package edu.ycp.cs.pygmymarmoset.app.servlet;
 
 import java.io.IOException;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import edu.ycp.cs.pygmymarmoset.app.controller.UpdatePasswordController;
 import edu.ycp.cs.pygmymarmoset.app.model.UpdatedPassword;

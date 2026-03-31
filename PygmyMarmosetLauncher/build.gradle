@@ -4,37 +4,45 @@ plugins {
 }
 
 dependencies {
+	implementation project(':PygmyMarmosetWebapp')
 	implementation "org.eclipse.jetty:jetty-server:${jetty_version}"
 	implementation "org.eclipse.jetty:jetty-jmx:${jetty_version}"
 	implementation "org.eclipse.jetty:jetty-util:${jetty_version}"
-	implementation "org.eclipse.jetty:jetty-webapp:${jetty_version}"
-	implementation "org.eclipse.jetty:jetty-servlet:${jetty_version}"
 	implementation "org.eclipse.jetty:jetty-http:${jetty_version}"
 	implementation "org.eclipse.jetty:jetty-io:${jetty_version}"
 	implementation "org.eclipse.jetty:jetty-security:${jetty_version}"
-	implementation "org.eclipse.jetty:jetty-annotations:${jetty_version}"
 	implementation "org.eclipse.jetty:jetty-xml:${jetty_version}"
-	implementation "org.eclipse.jetty:jetty-plus:${jetty_version}"
-	implementation "org.eclipse.jetty:apache-jsp:${jetty_version}"
-	implementation "org.eclipse.jetty.toolchain:jetty-schemas:${jetty_schemas_version}"
-	implementation "org.eclipse.jdt.core.compiler:ecj:${ecj_version}"
-	implementation "javax.servlet:javax.servlet-api:${javax_servlet_version}"
-	implementation "javax.annotation:javax.annotation-api:${javax_annotation_api_version}"
-	implementation "org.mortbay.jasper:apache-jsp:${mortbay_version}"
-	implementation "org.mortbay.jasper:apache-el:${mortbay_version}"
-	implementation "org.apache.taglibs:taglibs-standard-impl:${taglibs_version}"
-	implementation "org.apache.taglibs:taglibs-standard-spec:${taglibs_version}"
+	implementation "org.eclipse.jetty.ee10:jetty-ee10-webapp:${jetty_version}"
+	implementation "org.eclipse.jetty.ee10:jetty-ee10-servlet:${jetty_version}"
+	implementation "org.eclipse.jetty.ee10:jetty-ee10-annotations:${jetty_version}"
+	implementation "org.eclipse.jetty.ee10:jetty-ee10-plus:${jetty_version}"
+	implementation "org.eclipse.jetty.ee10:jetty-ee10-apache-jsp:${jetty_version}"
+	implementation "jakarta.servlet:jakarta.servlet-api:${jakarta_servlet_version}"
+	implementation "jakarta.annotation:jakarta.annotation-api:${jakarta_annotation_api_version}"
+	implementation "jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:${jakarta_servlet_jsp_jstl_api}"
+	implementation "org.glassfish.web:jakarta.servlet.jsp.jstl:${jakarta_servlet_jsp_jstl}"
+	implementation "org.mortbay.jasper:mortbay-apache-jsp:${mortbay_apache_jsp}"
 	implementation "org.ow2.asm:asm:${asm_version}"
 	implementation "org.ow2.asm:asm-commons:${asm_version}"
 	implementation "org.ow2.asm:asm-tree:${asm_version}"
 	implementation "commons-io:commons-io:${commons_io_version}"
-	implementation "org.apache.commons:commons-lang3:${commons_lang3_version}"
+	implementation("commons-beanutils:commons-beanutils:${commons_beanutils_version}") { transitive = false }
+	implementation("com.google.guava:guava:${guava_version}") { transitive = false }
 	implementation "com.github.daveho:daemon:${daemon_version}"
+	implementation("com.fasterxml.jackson.core:jackson-annotations:${jackson_version}")
+	implementation("com.fasterxml.jackson.core:jackson-core:${jackson_version}") { transitive = false }
+	implementation("com.fasterxml.jackson.core:jackson-databind:${jackson_version}") { transitive = false }
+	implementation "org.apache.commons:commons-lang3:${commons_lang3_version}"
+	implementation("org.apache.commons:commons-csv:${commons_csv_version}") { transitive = false }
+	implementation("org.apache.commons:commons-text:${commons_text_version}") { transitive = false }
+	implementation("org.mariadb.jdbc:mariadb-java-client:${mariadb_java_client_version}") { transitive = false }
+	implementation("org.javassist:javassist:${javassist_version}") { transitive = false }
 	implementation("org.slf4j:slf4j-api:${slf4j_version}") { transitive = false }
 	implementation("org.slf4j:jcl-over-slf4j:${slf4j_version}") { transitive = false }
 	implementation("org.apache.logging.log4j:log4j-core:${log4j_version}") { transitive = false }
 	implementation("org.apache.logging.log4j:log4j-api:${log4j_version}") { transitive = false }
 	implementation("org.apache.logging.log4j:log4j-slf4j2-impl:${log4j_version}") { transitive = false }
+	implementation("org.reflections:reflections:${reflections_version}") { transitive = false }
 }
 
 // To execute 'main': gradle -q run

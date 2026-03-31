@@ -9,8 +9,8 @@ package edu.ycp.cs.pygmymarmoset.app.tag;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.JspWriter;
+import jakarta.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspWriter;
 
 import org.apache.commons.beanutils.PropertyUtils;
 

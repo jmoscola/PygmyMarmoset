@@ -8,10 +8,10 @@ package edu.ycp.cs.pygmymarmoset.app.filter;
 
 import java.io.IOException;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import edu.ycp.cs.pygmymarmoset.app.model.LoginCredentials;
 import edu.ycp.cs.pygmymarmoset.app.model.User;

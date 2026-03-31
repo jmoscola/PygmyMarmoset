@@ -9,9 +9,9 @@ package edu.ycp.cs.pygmymarmoset.app.servlet;
 import java.lang.reflect.Modifier;
 import java.util.Set;
 
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-import javax.servlet.ServletRegistration;
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.ServletRegistration;
 
 import org.reflections.Reflections;
 

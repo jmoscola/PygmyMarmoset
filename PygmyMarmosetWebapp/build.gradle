@@ -16,10 +16,8 @@ dependencies {
 	implementation("com.fasterxml.jackson.core:jackson-databind:${jackson_version}") { transitive = false }
 	implementation("org.javassist:javassist:${javassist_version}") { transitive = false }
 	implementation("org.reflections:reflections:${reflections_version}") { transitive = false }
-	implementation("org.apache.taglibs:taglibs-standard-impl:${taglibs_version}") { transitive = false }
-	implementation("org.apache.taglibs:taglibs-standard-spec:${taglibs_version}") { transitive = false }
-	compileOnly "javax.servlet:javax.servlet-api:${javax_servlet_version}"
-	compileOnly "javax.servlet.jsp:javax.servlet.jsp-api:${javax_servlet_jsp_version}"
+	compileOnly "jakarta.servlet:jakarta.servlet-api:${jakarta_servlet_version}"
+	compileOnly "jakarta.servlet.jsp:jakarta.servlet.jsp-api:${jakarta_servlet_jsp_api}"
 	implementation("org.slf4j:slf4j-api:${slf4j_version}") { transitive = false }
 	implementation("org.slf4j:jcl-over-slf4j:${slf4j_version}") { transitive = false }
 	implementation("org.apache.logging.log4j:log4j-core:${log4j_version}") { transitive = false }

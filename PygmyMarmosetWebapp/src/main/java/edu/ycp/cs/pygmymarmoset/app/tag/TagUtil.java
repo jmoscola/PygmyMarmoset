@@ -6,9 +6,9 @@
 
 package edu.ycp.cs.pygmymarmoset.app.tag;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.jsp.JspContext;
-import javax.servlet.jsp.PageContext;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.jsp.JspContext;
+import jakarta.servlet.jsp.PageContext;
 
 public class TagUtil {
 	@SuppressWarnings("unchecked")

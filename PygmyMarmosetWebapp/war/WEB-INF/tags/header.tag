@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <div id="header">
 	<img id="headerImg" alt="Pygmy Marmoset photo" src="${pageContext.servletContext.contextPath}/img/pygmyMarmoset-crop.jpg">
 	<div id="headerItems">

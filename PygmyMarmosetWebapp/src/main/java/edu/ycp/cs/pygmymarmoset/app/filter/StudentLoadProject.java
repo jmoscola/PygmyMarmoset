@@ -6,7 +6,7 @@
 
 package edu.ycp.cs.pygmymarmoset.app.filter;
 
-import javax.servlet.Filter;
+import jakarta.servlet.Filter;
 
 public class StudentLoadProject extends AbstractProjectFilter implements Filter {
 	public StudentLoadProject() {

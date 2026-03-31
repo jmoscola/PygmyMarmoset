@@ -11,8 +11,8 @@ import edu.ycp.cs.pygmymarmoset.app.servlet.Constants;
 import edu.ycp.cs.pygmymarmoset.app.util.BeanUtil;
 import org.apache.commons.text.StringEscapeUtils;
 
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.JspWriter;
+import jakarta.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspWriter;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
