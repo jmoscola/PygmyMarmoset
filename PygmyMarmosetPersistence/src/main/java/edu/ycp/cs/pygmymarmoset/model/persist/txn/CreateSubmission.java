@@ -12,7 +12,7 @@ import edu.ycp.cs.pygmymarmoset.app.model.User;
 import edu.ycp.cs.pygmymarmoset.model.persist.DatabaseRunnable;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.io.input.CountingInputStream;
+import org.apache.commons.io.input.BoundedInputStream;
 import org.apache.commons.io.input.TeeInputStream;
 import org.apache.commons.io.output.NullOutputStream;
 
@@ -25,10 +25,10 @@ import java.util.zip.ZipException;
 import java.util.zip.ZipInputStream;
 
 public class CreateSubmission extends DatabaseRunnable<Submission> {
-	private Project project;
-	private User student;
-	private String fileName;
-	private InputStream uploadData;
+	private final Project project;
+	private final User student;
+	private final String fileName;
+	private final InputStream uploadData;
 
 	public CreateSubmission(Project project, User student, String fileName, InputStream uploadData) {
 		super("create submission");
@@ -39,7 +39,7 @@ public class CreateSubmission extends DatabaseRunnable<Submission> {
 	}
 	
 	@Override
-	public Submission execute(Connection conn) throws SQLException {
+	public Submission execute(Connection conn) throws SQLException, IOException {
 		// Find the maximum submission id
 		PreparedStatement findMax = prepareStatement(
 				conn,
@@ -72,7 +72,7 @@ public class CreateSubmission extends DatabaseRunnable<Submission> {
 		OutputStream os = blob.setBinaryStream(1);
 		
 		// Count the number of bytes in the uploaded file.
-		CountingInputStream cin = new CountingInputStream(uploadData);
+		BoundedInputStream cin = BoundedInputStream.builder().setInputStream(uploadData).get();
 		
 		// Use a TeeInputStream to transparently copy the uploaded file data
 		// to the Blob.  Use a ZipInputStream on top of the TeeInputStream
@@ -120,7 +120,7 @@ public class CreateSubmission extends DatabaseRunnable<Submission> {
 		PreparedStatement updateSize = prepareStatement(
 				conn,
 				"update submissions set size = ?, zip = ? where id = ?");
-		updateSize.setLong(1, cin.getByteCount());
+		updateSize.setLong(1, cin.getCount());
 		updateSize.setBoolean(2, isZip);
 		updateSize.setInt(3, submission.getId());
 		updateSize.executeUpdate();

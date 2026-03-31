@@ -24,3 +24,7 @@ application {
 	mainClass = 'edu.ycp.cs.pygmymarmoset.model.persist.Query'
 	// mainClass = 'edu.ycp.cs.pygmymarmoset.model.persist.CreateDatabase'
 }
+
+tasks.named('compileJava') {
+	options.compilerArgs << '-Xlint:deprecation'
+}

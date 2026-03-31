@@ -6,6 +6,7 @@
 
 package edu.ycp.cs.pygmymarmoset.model.persist;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -282,6 +283,8 @@ public class MariaDBDatabase implements IDatabase {
 				} else {
 					throw new PersistenceException("Transaction " + txn.getName() + " failed", e);
 				}
+			} catch (IOException e) {
+				throw new RuntimeException(e);
 			}
 		}
 		

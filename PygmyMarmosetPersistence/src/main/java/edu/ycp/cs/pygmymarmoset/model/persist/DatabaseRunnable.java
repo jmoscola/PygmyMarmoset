@@ -6,6 +6,7 @@
 
 package edu.ycp.cs.pygmymarmoset.model.persist;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,7 +27,7 @@ public abstract class DatabaseRunnable<E> {
 		return name;
 	}
 	
-	public abstract E execute(Connection conn) throws SQLException;
+	public abstract E execute(Connection conn) throws SQLException, IOException;
 	
 	public PreparedStatement prepareStatement(Connection conn, String sql) throws SQLException {
 		return prepareStatement(conn, sql, 0);

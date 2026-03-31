@@ -13,7 +13,7 @@ import edu.ycp.cs.pygmymarmoset.app.model.Project;
 /**
  * Load {@link Project} for instructor servlets which
  * access a specific project.  Assumes that LoadCourse
- * has already loaded the {@link Course}.
+ * has already loaded the Course.
  */
 public class InstLoadProject extends AbstractProjectFilter implements Filter {
 	public InstLoadProject() {

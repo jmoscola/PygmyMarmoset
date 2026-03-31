@@ -4,7 +4,6 @@ plugins {
 }
 
 dependencies {
-	implementation project(':PygmyMarmosetWebapp')
 	implementation "org.eclipse.jetty:jetty-server:${jetty_version}"
 	implementation "org.eclipse.jetty:jetty-jmx:${jetty_version}"
 	implementation "org.eclipse.jetty:jetty-util:${jetty_version}"
