@@ -7,6 +7,7 @@
 package edu.ycp.cs.pygmymarmoset.app.servlet;
 
 import java.io.IOException;
+import java.io.Serial;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @Navigation(parent=Index.class)
 @CrumbSpec(text="Admin")
 public class AdminIndex extends AbstractServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	@Override

@@ -18,7 +18,6 @@ import org.eclipse.jetty.ee10.webapp.JettyWebXmlConfiguration;
 import org.eclipse.jetty.ee10.webapp.MetaInfConfiguration;
 import org.eclipse.jetty.ee10.webapp.WebInfConfiguration;
 import org.eclipse.jetty.ee10.webapp.WebXmlConfiguration;
-import org.eclipse.jetty.util.component.LifeCycle;
 
 public class Launcher {
 	/**

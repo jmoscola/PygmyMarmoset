@@ -23,7 +23,7 @@ import edu.ycp.cs.pygmymarmoset.app.model.Project;
 import edu.ycp.cs.pygmymarmoset.app.util.ServletUtil;
 
 public abstract class AbstractProjectFilter {
-	private int projectIdIndex;
+	private final int projectIdIndex;
 	
 	public AbstractProjectFilter(int projectIdIndex) {
 		this.projectIdIndex = projectIdIndex;

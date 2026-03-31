@@ -7,6 +7,7 @@
 package edu.ycp.cs.pygmymarmoset.app.servlet;
 
 import java.io.IOException;
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -25,6 +26,7 @@ import edu.ycp.cs.pygmymarmoset.app.model.Term;
 import edu.ycp.cs.pygmymarmoset.app.model.User;
 
 public abstract class AbstractServlet extends HttpServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	public static Route getRouteForClass(Class<? extends AbstractServlet> servletCls) {

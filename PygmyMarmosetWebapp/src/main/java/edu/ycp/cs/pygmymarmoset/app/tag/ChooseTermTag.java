@@ -35,8 +35,7 @@ public class ChooseTermTag extends BeanTag {
 		
 		// We assume there is a request attribute "terms" that is the
 		// list of Terms.
-		@SuppressWarnings("unchecked")
-		List<Term> terms = (List<Term>) TagUtil.getRequestAttribute(getJspContext(), "terms");
+		List<Term> terms = TagUtil.getRequestAttribute(getJspContext(), "terms");
 		
 		// Make sure the current termId identifies an actual
 		// Term object.  If not, select the first one.
@@ -47,7 +46,7 @@ public class ChooseTermTag extends BeanTag {
 			}
 		}
 		if (!selectedOk) {
-			termId = terms.get(0).getId();
+			termId = terms.getFirst().getId();
 		}
 		
 		String propName = obj + "." + field;

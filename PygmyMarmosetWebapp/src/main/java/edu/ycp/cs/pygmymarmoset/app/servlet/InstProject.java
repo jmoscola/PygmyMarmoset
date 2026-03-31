@@ -7,6 +7,7 @@
 package edu.ycp.cs.pygmymarmoset.app.servlet;
 
 import java.io.IOException;
+import java.io.Serial;
 import java.util.List;
 
 import jakarta.servlet.ServletException;
@@ -25,6 +26,7 @@ import edu.ycp.cs.pygmymarmoset.app.model.User;
 @Navigation(parent=InstCourse.class)
 @CrumbSpec(text="Project %p", items={PathInfoItem.COURSE_ID, PathInfoItem.PROJECT_ID})
 public class InstProject extends AbstractServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 	
 	@Override

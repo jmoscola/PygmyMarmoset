@@ -7,6 +7,7 @@
 package edu.ycp.cs.pygmymarmoset.app.servlet;
 
 import java.io.IOException;
+import java.io.Serial;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,7 +25,8 @@ public abstract class AbstractFormServlet extends AbstractServlet {
 		STAY_ON_PAGE,
 		REDIRECT,
 	}
-	
+
+	@Serial
 	private static final long serialVersionUID = 1L;
 	
 	protected abstract Params createParams(HttpServletRequest req);

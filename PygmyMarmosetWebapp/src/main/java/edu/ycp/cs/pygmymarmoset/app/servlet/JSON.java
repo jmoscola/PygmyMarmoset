@@ -6,7 +6,7 @@
 
 package edu.ycp.cs.pygmymarmoset.app.servlet;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 
 public class JSON {
 	private static final ObjectMapper theObjectMapper = new ObjectMapper();

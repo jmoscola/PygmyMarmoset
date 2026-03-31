@@ -24,10 +24,10 @@ import edu.ycp.cs.pygmymarmoset.app.model.introspect.Introspect;
 import edu.ycp.cs.pygmymarmoset.app.util.BeanUtil;
 
 public class Params {
-	private static Logger logger = LoggerFactory.getLogger(Params.class);
+	private static final Logger logger = LoggerFactory.getLogger(Params.class);
 
-	private HttpServletRequest req;
-	private Map<String, Object> modelObjects;
+	private final HttpServletRequest req;
+	private final Map<String, Object> modelObjects;
 	
 	public Params(HttpServletRequest req) {
 		this.req = req;

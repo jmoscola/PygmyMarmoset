@@ -7,6 +7,7 @@
 package edu.ycp.cs.pygmymarmoset.app.servlet;
 
 import java.io.IOException;
+import java.io.Serial;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -20,6 +21,7 @@ import edu.ycp.cs.pygmymarmoset.app.util.ServletUtil;
 @Navigation(parent=AdminIndex.class)
 @CrumbSpec(text="Login as another user")
 public class AdminUserLogin extends AbstractFormServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	@Override

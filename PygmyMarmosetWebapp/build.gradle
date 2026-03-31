@@ -11,9 +11,9 @@ dependencies {
 	implementation("commons-io:commons-io:${commons_io_version}") { transitive = false }
 	implementation("org.apache.commons:commons-text:${commons_text_version}") { transitive = false }
 	implementation("com.google.guava:guava:${guava_version}") { transitive = false }
-	implementation "com.fasterxml.jackson.core:jackson-annotations:${jackson_version}"
-	implementation("com.fasterxml.jackson.core:jackson-core:${jackson_version}") { transitive = false }
-	implementation("com.fasterxml.jackson.core:jackson-databind:${jackson_version}") { transitive = false }
+	implementation "com.fasterxml.jackson.core:jackson-annotations:${jackson_annotations_version}"
+	implementation("tools.jackson.core:jackson-core:${jackson_core_version}") { transitive = false }
+	implementation("tools.jackson.core:jackson-databind:${jackson_databind_version}") { transitive = false }
 	implementation("org.javassist:javassist:${javassist_version}") { transitive = false }
 	implementation("org.reflections:reflections:${reflections_version}") { transitive = false }
 	compileOnly "jakarta.servlet:jakarta.servlet-api:${jakarta_servlet_version}"

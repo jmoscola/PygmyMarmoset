@@ -28,7 +28,7 @@ import jakarta.servlet.http.HttpServletRequest;
  * and store them as the "args" request attribute.
  */
 public class PathInfoArgs implements Filter {
-	private static Pattern PATH_INFO_PAT =
+	private static final Pattern PATH_INFO_PAT =
 			Pattern.compile("[A-Za-z]/(\\d+(/\\d+)*)$");
 	
 	@Override

@@ -7,6 +7,7 @@
 package edu.ycp.cs.pygmymarmoset.app.servlet;
 
 import java.io.IOException;
+import java.io.Serial;
 import java.util.List;
 
 import jakarta.servlet.ServletException;
@@ -16,6 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import edu.ycp.cs.pygmymarmoset.app.util.ServletUtil;
 
 public abstract class AbstractViewEntryServlet extends AbstractServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private final int entryIndexArg; // which path info argument is the entry index

@@ -7,6 +7,7 @@
 package edu.ycp.cs.pygmymarmoset.app.servlet;
 
 import java.io.IOException;
+import java.io.Serial;
 import java.util.List;
 
 import jakarta.servlet.ServletException;
@@ -18,6 +19,7 @@ import edu.ycp.cs.pygmymarmoset.app.model.Submission;
 import edu.ycp.cs.pygmymarmoset.app.model.SubmissionEntry;
 
 public abstract class AbstractSubmissionServlet extends AbstractServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	@Override

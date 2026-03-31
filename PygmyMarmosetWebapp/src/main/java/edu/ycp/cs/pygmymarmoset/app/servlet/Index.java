@@ -7,6 +7,7 @@
 package edu.ycp.cs.pygmymarmoset.app.servlet;
 
 import java.io.IOException;
+import java.io.Serial;
 import java.util.List;
 
 import jakarta.servlet.ServletException;
@@ -23,6 +24,7 @@ import edu.ycp.cs.pygmymarmoset.app.model.User;
 @Route(pattern="/index", view="/_view/index.jsp")
 @CrumbSpec(text="Home")
 public class Index extends AbstractServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	@Override

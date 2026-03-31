@@ -8,6 +8,7 @@ package edu.ycp.cs.pygmymarmoset.app.servlet;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.Serial;
 import java.util.zip.ZipOutputStream;
 
 import jakarta.servlet.ServletException;
@@ -23,11 +24,12 @@ import edu.ycp.cs.pygmymarmoset.app.model.Project;
  * bulk submissions download for a {@link Project}.
  */
 public abstract class AbstractDownloadSubmissionsServlet extends AbstractServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
-	private GetSubmissionsMode mode;
-	private String fnamePrefix;
-	private String fnameSuffix;
+	private final GetSubmissionsMode mode;
+	private final String fnamePrefix;
+	private final String fnameSuffix;
 	
 	/**
 	 * Constructor.

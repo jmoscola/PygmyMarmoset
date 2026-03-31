@@ -9,6 +9,7 @@ package edu.ycp.cs.pygmymarmoset.app.servlet;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Serial;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -27,6 +28,7 @@ import edu.ycp.cs.pygmymarmoset.app.model.Submission;
 import edu.ycp.cs.pygmymarmoset.app.model.User;
 
 public abstract class AbstractDownloadServlet extends AbstractServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	@Override

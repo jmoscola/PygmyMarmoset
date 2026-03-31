@@ -9,6 +9,7 @@ package edu.ycp.cs.pygmymarmoset.app.servlet;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.io.Serial;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -41,6 +42,7 @@ import edu.ycp.cs.pygmymarmoset.app.util.ServletUtil;
 @Route(pattern="/bluej/SubmitProjectViaBlueJSubmitter", view="")
 @MultipartConfig(location="/tmp", fileSizeThreshold=1024*1024, maxFileSize=16*1024*1024)
 public class StudentSubmitBlueJ extends AbstractServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 	
 	private static final Pattern SEMESTER_PAT =
@@ -118,7 +120,6 @@ public class StudentSubmitBlueJ extends AbstractServlet {
 			}
 		} catch (ValidationException e) {
 			ServletUtil.sendBadRequest(req, resp, e.getMessage());
-			return;
 		}
 	}
 

@@ -19,7 +19,7 @@ public class UberjarDaemon implements IDaemon {
 	private static final Logger logger = LoggerFactory.getLogger(UberjarDaemon.class);
 
 	// Version of Launcher that sets things up to allow JSPs to work.
-	private final class UberjarLauncher extends Launcher {
+	private static class UberjarLauncher extends Launcher {
 		@Override
 		protected void onCreateWebAppContext(WebAppContext webapp) {
 			// Register JettyJasperInitializer to enable JSP support

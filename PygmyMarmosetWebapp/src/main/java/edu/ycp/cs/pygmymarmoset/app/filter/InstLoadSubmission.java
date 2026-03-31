@@ -26,7 +26,6 @@ public class InstLoadSubmission extends AbstractSubmissionFilter implements Filt
 			ServletUtil.sendBadRequest(req, resp, "Submission id is required");
 			return null;
 		}
-		Integer submissionId = args.get(3);
-		return submissionId;
+        return args.get(3); // submission ID
 	}
 }

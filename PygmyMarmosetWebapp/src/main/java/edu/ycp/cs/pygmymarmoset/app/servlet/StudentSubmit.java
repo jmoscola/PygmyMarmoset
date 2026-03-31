@@ -8,6 +8,7 @@ package edu.ycp.cs.pygmymarmoset.app.servlet;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serial;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -28,6 +29,7 @@ import edu.ycp.cs.pygmymarmoset.app.model.User;
 @CrumbSpec(text="Upload submission")
 @MultipartConfig(location="/tmp", fileSizeThreshold=1024*1024, maxFileSize=16*1024*1024)
 public class StudentSubmit extends AbstractFormServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	@Override

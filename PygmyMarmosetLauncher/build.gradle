@@ -29,9 +29,9 @@ dependencies {
 	implementation("commons-beanutils:commons-beanutils:${commons_beanutils_version}") { transitive = false }
 	implementation("com.google.guava:guava:${guava_version}") { transitive = false }
 	implementation "com.github.daveho:daemon:${daemon_version}"
-	implementation("com.fasterxml.jackson.core:jackson-annotations:${jackson_version}")
-	implementation("com.fasterxml.jackson.core:jackson-core:${jackson_version}") { transitive = false }
-	implementation("com.fasterxml.jackson.core:jackson-databind:${jackson_version}") { transitive = false }
+	implementation "com.fasterxml.jackson.core:jackson-annotations:${jackson_annotations_version}"
+	implementation("tools.jackson.core:jackson-core:${jackson_core_version}") { transitive = false }
+	implementation("tools.jackson.core:jackson-databind:${jackson_databind_version}") { transitive = false }
 	implementation "org.apache.commons:commons-lang3:${commons_lang3_version}"
 	implementation("org.apache.commons:commons-csv:${commons_csv_version}") { transitive = false }
 	implementation("org.apache.commons:commons-text:${commons_text_version}") { transitive = false }

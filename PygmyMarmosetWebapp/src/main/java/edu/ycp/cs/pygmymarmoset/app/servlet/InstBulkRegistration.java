@@ -8,6 +8,7 @@ package edu.ycp.cs.pygmymarmoset.app.servlet;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serial;
 import java.util.List;
 
 import jakarta.servlet.ServletException;
@@ -27,6 +28,7 @@ import edu.ycp.cs.pygmymarmoset.app.model.SectionNumber;
 @CrumbSpec(text="Bulk registration", items={PathInfoItem.COURSE_ID})
 @MultipartConfig(location="/tmp", fileSizeThreshold=1024*1024, maxFileSize=16*1024*1024)
 public class InstBulkRegistration extends AbstractFormServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	@Override

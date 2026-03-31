@@ -36,11 +36,11 @@ public class LoadCourse implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) req_;
 		List<Integer> args = ServletUtil.getRequestArgs(req);
-		if (args.size() < 1) {
+		if (args.isEmpty()) {
 			ServletUtil.sendBadRequest(req, (HttpServletResponse)resp_, "Course id argument is required");
 			return;
 		}
-		Integer courseId = args.get(0);
+		Integer courseId = args.getFirst();
 		
 		FindCourseController findCourse = new FindCourseController();
 		Pair<Course, Term> courseAndTerm = findCourse.execute(courseId);

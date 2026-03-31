@@ -7,6 +7,7 @@
 package edu.ycp.cs.pygmymarmoset.app.servlet;
 
 import java.io.IOException;
+import java.io.Serial;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -18,6 +19,7 @@ import edu.ycp.cs.pygmymarmoset.app.model.Project;
 @Navigation(parent=InstProject.class)
 @CrumbSpec(text="Edit %p", items={PathInfoItem.COURSE_ID, PathInfoItem.PROJECT_ID, PathInfoItem.PROJECT_ID})
 public class InstEditProject extends AbstractFormServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	@Override

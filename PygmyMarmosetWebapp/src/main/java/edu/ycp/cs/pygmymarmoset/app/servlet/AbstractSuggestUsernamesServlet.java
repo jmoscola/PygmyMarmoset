@@ -7,6 +7,7 @@
 package edu.ycp.cs.pygmymarmoset.app.servlet;
 
 import java.io.IOException;
+import java.io.Serial;
 import java.util.List;
 
 import jakarta.servlet.ServletException;
@@ -20,6 +21,7 @@ import edu.ycp.cs.pygmymarmoset.app.controller.SuggestUsernamesController;
  * autocomplete suggestions. 
  */
 public abstract class AbstractSuggestUsernamesServlet extends AbstractServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private static class Suggestion {

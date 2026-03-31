@@ -7,6 +7,7 @@
 package edu.ycp.cs.pygmymarmoset.app.servlet;
 
 import java.io.IOException;
+import java.io.Serial;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -21,14 +22,14 @@ import edu.ycp.cs.pygmymarmoset.app.model.User;
 @Navigation(parent=InstCourse.class)
 @CrumbSpec(text="Register student", items={PathInfoItem.COURSE_ID})
 public class InstRegisterStudent extends AbstractFormServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected Params createParams(HttpServletRequest req) {
-		Params params = new Params(req)
-				.add("student", User.class)
-				.add("role", Role.class);
-		return params;
+        return new Params(req)
+                .add("student", User.class)
+                .add("role", Role.class);
 	}
 
 	@Override

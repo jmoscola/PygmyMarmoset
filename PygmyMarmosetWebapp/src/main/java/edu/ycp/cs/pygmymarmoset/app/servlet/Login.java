@@ -7,6 +7,7 @@
 package edu.ycp.cs.pygmymarmoset.app.servlet;
 
 import java.io.IOException;
+import java.io.Serial;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -22,6 +23,7 @@ import org.slf4j.LoggerFactory;
 @Route(pattern="/login", view="/_view/login.jsp")
 public class Login extends AbstractFormServlet {
 	private static final Logger logger = LoggerFactory.getLogger(Login.class);
+	@Serial
 	private static final long serialVersionUID = 1L;
 	
 	@Override

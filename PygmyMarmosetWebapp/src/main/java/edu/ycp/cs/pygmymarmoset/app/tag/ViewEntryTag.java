@@ -9,6 +9,7 @@ package edu.ycp.cs.pygmymarmoset.app.tag;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -102,7 +103,7 @@ public class ViewEntryTag extends SimpleTagSupport {
 					out.print(findBrush(name));
 					out.print("\"");
 					out.print(">");
-					InputStreamReader reader = new InputStreamReader(blobIn, "UTF-8");
+					InputStreamReader reader = new InputStreamReader(blobIn, StandardCharsets.UTF_8);
 					for (;;) {
 						int c = reader.read();
 						if (c < 0) {
