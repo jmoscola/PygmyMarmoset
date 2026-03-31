@@ -1,31 +1,35 @@
-// Common PygmyMarmoset JavaScript functions/data.
-// All are accessed via the pm. prefix.
+var pm = {
+    dateTimeOptions: {
+        enableTime: true,
+        enableSeconds: true,
+        dateFormat: 'Y-m-d H:i:S',
+        time_24hr: true,
+        defaultHour: 23,
+        defaultMinute: 59,
+        defaultSecond: 59,
+        onOpen: function(selectedDates, dateStr, instance) {
+            if (selectedDates.length === 0) {
+                instance.setDate(null, false);
+            }
+        }
+    },
 
-pm = {
-	dateTimeOptions: {
-		dateFormat: 'yy-mm-dd',
-		timeFormat: 'HH:mm:ss',
-		hour: 23,
-		minute: 59,
-		second: 59
-	},
+    initDateTimePicker: function(elementId) {
+        flatpickr(elementId, pm.dateTimeOptions);
+    },
 
-	autocompleteOn: function(elementId, suggestionUri) {
-		$(elementId).autocomplete({
-			source: function(req, resp) {
-				$.post(
-						// URL
-						suggestionUri,
-						// Data to send
-						{ term: req.term },
-						// Success function
-						function(data) {
-							resp(data);
-						},
-						// Data type expected from server
-						'json'
-				);
-			}
-		});
-	}
+    autocompleteOn: function(elementId, suggestionUri) {
+        $(elementId).autocomplete({
+            source: function(req, resp) {
+                $.post(
+                    suggestionUri,
+                    { term: req.term },
+                    function(data) {
+                        resp(data);
+                    },
+                    'json'
+                );
+            }
+        });
+    }
 };

@@ -4,16 +4,13 @@
 <%@ attribute name="syntaxhighlight" required="false" %>
 <title>Pygmy Marmoset: ${title}</title>
 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/pygmymarmoset.css">
-<script src="${pageContext.servletContext.contextPath}/js/pygmymarmoset.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
 <c:if test="${ui}">
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/jquery-ui-timepicker-addon.min.css">
-<script src="${pageContext.servletContext.contextPath}/js/jquery-ui-timepicker-addon.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
 </c:if>
+<script src="${pageContext.servletContext.contextPath}/js/pygmymarmoset.js"></script>
 <c:if test="${syntaxhighlight}">
-<!-- Include prism js/css -->
 <script src="${pageContext.servletContext.contextPath}/js/prism.js"></script>
 <script src="${pageContext.servletContext.contextPath}/js/prism.clojure.js"></script>
 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/prism.css">
