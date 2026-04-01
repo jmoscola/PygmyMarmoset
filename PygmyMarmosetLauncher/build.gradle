@@ -25,6 +25,7 @@ dependencies {
 	implementation "org.ow2.asm:asm-commons:${asm_version}"
 	implementation "org.ow2.asm:asm-tree:${asm_version}"
 	implementation "commons-io:commons-io:${commons_io_version}"
+	implementation "commons-codec:commons-codec:${commons_codec_version}"
 	implementation("commons-beanutils:commons-beanutils:${commons_beanutils_version}") { transitive = false }
 	implementation("com.google.guava:guava:${guava_version}") { transitive = false }
 	implementation "com.github.daveho:daemon:${daemon_version}"
