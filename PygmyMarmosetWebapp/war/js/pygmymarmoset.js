@@ -29,6 +29,11 @@ var pm = {
                     },
                     'json'
                 );
+            },
+            open: function() {
+                $(this).autocomplete("widget").css({
+                    "width": $(this).outerWidth() + "px"
+                });
             }
         });
     }
