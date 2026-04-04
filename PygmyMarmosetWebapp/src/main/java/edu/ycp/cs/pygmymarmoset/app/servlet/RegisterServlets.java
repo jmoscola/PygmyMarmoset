@@ -8,34 +8,46 @@ import java.lang.reflect.Modifier;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import jakarta.servlet.Servlet;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.ServletRegistration;
 
-public class RegisterServlets implements ServletContextListener {
+import org.reflections.Reflections;
+import org.reflections.scanners.Scanners;
+import org.reflections.util.ClasspathHelper;
+import org.reflections.util.ConfigurationBuilder;
 
+public class RegisterServlets implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent e) {
 		ClassLoader classLoader = e.getServletContext().getClassLoader();
 		List<String> classNames = loadServletList(classLoader);
 
-		for (String className : classNames) {
-			try {
-				Class<?> cls = classLoader.loadClass(className);
-				if (!AbstractServlet.class.isAssignableFrom(cls)) {
-					continue;
-				}
+		if (classNames != null) {
+			// Uberjar path — use pre-generated servlets.txt
+			System.out.println("RegisterServlets: found " + classNames.size() + " class name(s) in servlet list");
+			for (String className : classNames) {
+				registerServlet(e, classLoader, className);
+			}
+		} else {
+			// IDE path — fall back to Reflections scanning
+			System.out.println("RegisterServlets: servlets.txt not found, falling back to Reflections scanning");
+			String packageName = RegisterServlets.class.getPackage().getName();
+			Reflections r = new Reflections(new ConfigurationBuilder()
+					.setUrls(ClasspathHelper.forPackage(packageName, classLoader))
+					.setScanners(Scanners.SubTypes)
+					.addClassLoaders(classLoader)
+			);
+			Set<Class<? extends AbstractServlet>> servlets = r.getSubTypesOf(AbstractServlet.class);
+			System.out.println("RegisterServlets: Reflections found " + servlets.size() + " servlet(s)");
+			for (Class<? extends AbstractServlet> cls : servlets) {
 				if (Modifier.isAbstract(cls.getModifiers())) {
 					continue;
 				}
-				Class<? extends Servlet> servletClass = cls.asSubclass(Servlet.class);
-				Route route = AbstractServlet.getRouteForClass(cls.asSubclass(AbstractServlet.class));
-				ServletRegistration.Dynamic reg = e.getServletContext().addServlet(cls.getSimpleName(), servletClass);
-				reg.addMapping(route.pattern());
-			} catch (ClassNotFoundException ex) {
-				System.err.println("RegisterServlets: could not load class " + className + ": " + ex.getMessage());
+				registerServletClass(e, cls);
 			}
 		}
 
@@ -49,14 +61,38 @@ public class RegisterServlets implements ServletContextListener {
 		}
 	}
 
+	private void registerServlet(ServletContextEvent e, ClassLoader classLoader, String className) {
+		try {
+			Class<?> cls = classLoader.loadClass(className);
+			if (!AbstractServlet.class.isAssignableFrom(cls)) {
+				return;
+			}
+			if (Modifier.isAbstract(cls.getModifiers())) {
+				return;
+			}
+			registerServletClass(e, cls.asSubclass(AbstractServlet.class));
+		} catch (ClassNotFoundException ex) {
+			System.err.println("RegisterServlets: could not load class " + className + ": " + ex.getMessage());
+		}
+	}
+
+	private void registerServletClass(ServletContextEvent e, Class<? extends AbstractServlet> cls) {
+		Class<? extends Servlet> servletClass = cls.asSubclass(Servlet.class);
+		Route route = AbstractServlet.getRouteForClass(cls);
+		System.out.println("Registering servlet " + cls.getSimpleName() + " using pattern " + route.pattern());
+		ServletRegistration.Dynamic reg = e.getServletContext().addServlet(cls.getSimpleName(), servletClass);
+		reg.addMapping(route.pattern());
+	}
+
+	// Returns null if servlets.txt is not found, indicating IDE mode
 	private List<String> loadServletList(ClassLoader classLoader) {
-		List<String> names = new ArrayList<>();
 		try (InputStream in = classLoader.getResourceAsStream("servlets.txt")) {
 			if (in == null) {
-				System.err.println("RegisterServlets: servlets.txt not found in classpath");
-				return names;
+				return null;
 			}
-			try (BufferedReader reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8))) {
+			List<String> names = new ArrayList<>();
+			try (BufferedReader reader = new BufferedReader(
+					new InputStreamReader(in, StandardCharsets.UTF_8))) {
 				String line;
 				while ((line = reader.readLine()) != null) {
 					line = line.trim();
@@ -65,10 +101,11 @@ public class RegisterServlets implements ServletContextListener {
 					}
 				}
 			}
+			return names;
 		} catch (IOException ex) {
 			System.err.println("RegisterServlets: error reading servlets.txt: " + ex.getMessage());
+			return null;
 		}
-		return names;
 	}
 
 	@Override

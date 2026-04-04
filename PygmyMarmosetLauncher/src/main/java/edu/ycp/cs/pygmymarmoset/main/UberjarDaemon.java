@@ -18,15 +18,12 @@ import org.slf4j.LoggerFactory;
 public class UberjarDaemon implements IDaemon {
 	private static final Logger logger = LoggerFactory.getLogger(UberjarDaemon.class);
 
-	// Version of Launcher that sets things up to allow JSPs to work.
 	private static class UberjarLauncher extends Launcher {
 		@Override
 		protected void onCreateWebAppContext(WebAppContext webapp) {
-			// Register JettyJasperInitializer to enable JSP support
 			webapp.addServletContainerInitializer(
 					new ServletContainerInitializerHolder(new JettyJasperInitializer())
 			);
-
 			try {
 				webapp.setAttribute("jakarta.servlet.context.tempdir", getScratchDir());
 			} catch (IOException e) {
@@ -54,10 +51,8 @@ public class UberjarDaemon implements IDaemon {
 			this.tmpdir = tmpdir;
 		} catch (Exception e) {
 			logger.warn("Error creating instance-specific temp dir: {}", e.getMessage());
-			logger.warn("Webapp files will be placed in default temp dir {}", System.getProperty("java.io.tmpdir"));
 		}
 
-		// Launch the webapp!
 		ProtectionDomain domain = getClass().getProtectionDomain();
 		String codeBase = domain.getCodeSource().getLocation().toExternalForm();
 		if (!codeBase.endsWith(".jar")) {
@@ -65,7 +60,7 @@ public class UberjarDaemon implements IDaemon {
 		}
 		String webappUrl = "jar:" + codeBase + "!/war";
 		try {
-			Launcher launcher = new UberjarLauncher();
+			UberjarLauncher launcher = new UberjarLauncher();
 			this.server = launcher.launch(false, PORT, webappUrl);
 			this.server.start();
 		} catch (Exception e) {
@@ -102,7 +97,7 @@ public class UberjarDaemon implements IDaemon {
 			throw new IllegalStateException("Exception shutting down Jetty", e);
 		}
 
-		// Clean up temp dir
+		// clean up temp dir
 		if (tmpdir != null) {
 			try {
 				FileUtils.deleteDirectory(tmpdir);

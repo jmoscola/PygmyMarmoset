@@ -7,8 +7,31 @@ def uberJarStagingDir = "${rootProject.layout.buildDirectory.get()}/uberJarStagi
 def launcherProject = project(':PygmyMarmosetLauncher')
 def webappProject = project(':PygmyMarmosetWebapp')
 
+tasks.register('copyWebappFiles', Copy) {
+	dependsOn(':PygmyMarmosetWebapp:war')
+	from {
+		def webappLibDir = webappProject.base.getLibsDirectory().getAsFile().get()
+		zipTree("${webappLibDir}/PygmyMarmosetWebapp.war")
+	}
+	into "$uberJarStagingDir/war"
+	exclude 'META-INF/**'
+	exclude 'WEB-INF/lib/**'
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+tasks.register('copyJstlJar', Copy) {
+	dependsOn(':PygmyMarmosetLauncher:compileJava')
+	from {
+		launcherProject.configurations.compileClasspath.filter {
+			it.name.startsWith('jakarta.servlet.jsp.jstl-') && !it.name.contains('api')
+		}
+	}
+	into "${uberJarStagingDir}/META-INF/lib"
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
 tasks.register('uberJar', Jar) {
-	dependsOn(':copyWebappFiles', ':copyLauncherFiles', ':copyLauncherDeps', ':copyConfigProperties', ':copyLog4j2Properties')
+	dependsOn(':copyWebappFiles', ':copyJstlJar', ':copySubprojectClasses', ':copyLauncherFiles', ':copyLauncherDeps', ':copyTldFiles', ':copyConfigProperties', ':copyLog4j2Properties', ':generateServletList')
 	manifest {
 		attributes([
 				'Main-Class' : 'edu.ycp.cs.pygmymarmoset.main.UberjarMain',
@@ -21,17 +44,46 @@ tasks.register('uberJar', Jar) {
 }
 
 
-tasks.register('copyWebappFiles', Copy) {
-	dependsOn(':PygmyMarmosetWebapp:war')
-	from {
-		def webappLibDir = webappProject.base.getLibsDirectory().getAsFile().get()
-		zipTree("${webappLibDir}/PygmyMarmosetWebapp.war")
+tasks.register('generateServletList') {
+	dependsOn(':PygmyMarmosetWebapp:compileJava')
+	def outputFile = file("${uberJarStagingDir}/war/WEB-INF/classes/servlets.txt")
+	outputs.file(outputFile)
+	doLast {
+		def classesDir = file("${webappProject.layout.buildDirectory.get()}/classes/java/main")
+		def servletPackagePath = 'edu/ycp/cs/pygmymarmoset/app/servlet'
+		def packageDir = new File(classesDir, servletPackagePath)
+		def lines = []
+		packageDir.eachFile { f ->
+			if (f.name.endsWith('.class') && !f.name.contains('$')) {
+				def className = 'edu.ycp.cs.pygmymarmoset.app.servlet.' + f.name.replace('.class', '')
+				lines << className
+			}
+		}
+		outputFile.parentFile.mkdirs()
+		outputFile.text = lines.join('\n')
+		println "Generated servlet list with ${lines.size()} entries"
 	}
-	into "$uberJarStagingDir/war"
-	exclude 'META-INF/**'
+}
+
+tasks.register('copySubprojectClasses', Copy) {
+	dependsOn(
+			':PygmyMarmosetModelClasses:compileJava',
+			':PygmyMarmosetPersistence:compileJava',
+			':PygmyMarmosetControllers:compileJava'
+	)
+	from project(':PygmyMarmosetModelClasses').sourceSets.main.output.classesDirs
+	from project(':PygmyMarmosetModelClasses').sourceSets.main.output.resourcesDir
+	from project(':PygmyMarmosetPersistence').sourceSets.main.output.classesDirs
+	from project(':PygmyMarmosetPersistence').sourceSets.main.output.resourcesDir
+	from project(':PygmyMarmosetControllers').sourceSets.main.output.classesDirs
+	from project(':PygmyMarmosetControllers').sourceSets.main.output.resourcesDir
+	into "${uberJarStagingDir}/war/WEB-INF/classes"
 	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
+//tasks.named('uberJar') {
+//	dependsOn(':generateServletList')
+//}
 
 tasks.register('copyLauncherFiles', Copy) {
 	dependsOn(':PygmyMarmosetLauncher:compileJava')
@@ -57,7 +109,6 @@ tasks.register('copyLauncherDeps', Copy) {
 			'META-INF/*.DSA',
 			'META-INF/*.RSA',
 			'META-INF/DEPENDENCIES*',
-			'META-INF/*.tld',
 			'META-INF/MANIFEST.MF',
 			'META-INF/LICENSE*',
 			'META-INF/NOTICE*',
@@ -88,11 +139,20 @@ tasks.register('copyLog4j2Properties', Copy) {
 	}
 }
 
+tasks.register('copyTldFiles', Copy) {
+	dependsOn(':copyLauncherFiles')
+	dependsOn(':copyLauncherDeps')
+	dependsOn(':copyLog4j2Properties')
+	from "${uberJarStagingDir}/META-INF"
+	into "${uberJarStagingDir}/war/WEB-INF"
+	include '*.tld'
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
 
 tasks.register('clean', Delete) {
 	delete rootProject.layout.buildDirectory
+	delete "logs"
 }
-
 
 subprojects {
 	group = 'edu.ycp.cs.pygmymarmoset'

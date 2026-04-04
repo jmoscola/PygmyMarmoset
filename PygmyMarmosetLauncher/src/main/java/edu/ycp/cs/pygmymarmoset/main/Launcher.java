@@ -27,7 +27,7 @@ public class Launcher {
 	 * @param port which port to listen on
 	 * @param warUrl the URL of the webapp war directory
 	 */
-	public Server launch(boolean launchFromIDE, int port, String warUrl) throws Exception {
+	public Server launch(boolean launchFromIDE, int port, String warUrl) {
 		Server server = new Server(port);
 
 		MBeanContainer mbContainer = new MBeanContainer(ManagementFactory.getPlatformMBeanServer());
@@ -37,15 +37,13 @@ public class Launcher {
 		webapp.setContextPath("/marmoset");
 		webapp.setWar(warUrl);
 
-		// Allow the webapp classloader to see Jetty's own servlet listener and JSP classes
+		// allow the webapp classloader to see Jetty's own servlet listener and JSP classes
 		webapp.getHiddenClassMatcher().exclude("org.eclipse.jetty.ee10.servlet.");
 		webapp.getHiddenClassMatcher().exclude("org.eclipse.jetty.ee10.jsp.");
 		webapp.getHiddenClassMatcher().exclude("org.eclipse.jetty.ee10.apache.jsp.");
 
 		onCreateWebAppContext(webapp);
 
-		// In Jetty 12, configurations are set directly on the WebAppContext.
-		// Jetty automatically handles ordering via topological sort.
 		webapp.setConfigurations(new Configuration[] {
 				new WebInfConfiguration(),
 				new WebXmlConfiguration(),
@@ -65,14 +63,11 @@ public class Launcher {
 						"|.*/jetty-ee10-servlet-[^/]*\\.jar$"
 		);
 
-		// Allow webapp to see server-side JSP and servlet classes
+		// allow webapp to see server-side JSP and servlet classes
 		webapp.setParentLoaderPriority(true);
 
-		// Don't allow directory listings
-		webapp.setInitParameter("org.eclipse.jetty.ee10.servlet.Default.dirAllowed", "false");
-
-		// Allow the welcome file to be a servlet
-		webapp.setInitParameter("org.eclipse.jetty.ee10.servlet.Default.welcomeServlets", "true");
+		// disable directory listing
+		webapp.setInitParameter("org.eclipse.jetty.servlet.context.dirAllowed", "false");
 
 		if (launchFromIDE) {
 			webapp.setExtraClasspath(
