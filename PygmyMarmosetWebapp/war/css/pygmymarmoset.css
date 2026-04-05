@@ -213,15 +213,3 @@ a.crumb:hover {
 .ui-helper-hidden-accessible {
     display: none;
 }
-
-/* Make jquery-ui widgets use a smaller font. */
-/*.ui-widget {
-    color: red;
-    font-size:80% !important;
-}
-
-.ui-helper-hidden-accessible {
-    color: green;
-    font-size:80% !important;
-}
-*/

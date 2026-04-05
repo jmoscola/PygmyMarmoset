@@ -14,6 +14,10 @@
 	
 	<!-- Filters and filter mappings -->
 	<filter>
+    	<filter-name>RootRedirectFilter</filter-name>
+    	<filter-class>edu.ycp.cs.pygmymarmoset.app.filter.RootRedirectFilter</filter-class>
+	</filter>
+	<filter>
 		<filter-name>HideViews</filter-name>
 		<filter-class>edu.ycp.cs.pygmymarmoset.app.filter.HideViews</filter-class>
 	</filter>
@@ -61,10 +65,8 @@
 		<filter-name>InstLoadStudent</filter-name>
 		<filter-class>edu.ycp.cs.pygmymarmoset.app.filter.InstLoadStudent</filter-class>
 	</filter>
-	<filter-mapping> <!-- Views should not be accessed directly -->
-		<filter-name>HideViews</filter-name>
-		<url-pattern>/_view/*</url-pattern>
-	</filter-mapping>
+
+
 	<filter-mapping>
 		<!--
 			Parses path info args.
@@ -74,6 +76,14 @@
 		-->
 		<filter-name>PathInfoArgs</filter-name>
 		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>RootRedirectFilter</filter-name>
+		<url-pattern>/</url-pattern>
+	</filter-mapping>
+	<filter-mapping> <!-- Views should not be accessed directly -->
+		<filter-name>HideViews</filter-name>
+		<url-pattern>/_view/*</url-pattern>
 	</filter-mapping>
 	<filter-mapping>
 		<filter-name>RequireLogin</filter-name>
@@ -203,6 +213,23 @@
 		<listener-class>edu.ycp.cs.pygmymarmoset.app.servlet.RegisterServlets</listener-class>
 	</listener>
 
+	<!-- Explicit MIME type mappings to ensure correct content types in Jetty 12 -->
+	<mime-mapping>
+		<extension>css</extension>
+		<mime-type>text/css</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>js</extension>
+		<mime-type>text/javascript</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>html</extension>
+		<mime-type>text/html;charset=UTF-8</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>jsp</extension>
+		<mime-type>text/html;charset=UTF-8</mime-type>
+	</mime-mapping>
 
 	<!-- Generic error handling - never expose internal details -->
 	<error-page>

@@ -50,15 +50,6 @@ public class RegisterServlets implements ServletContextListener {
 				registerServletClass(e, cls);
 			}
 		}
-
-		// map Welcome servlet to root URL to handle http://host/marmoset/
-		ServletRegistration welcomeReg = e.getServletContext().getServletRegistration("Welcome");
-		if (welcomeReg != null) {
-			welcomeReg.addMapping("/");
-			System.out.println("RegisterServlets: mapped Welcome servlet to /");
-		} else {
-			System.err.println("RegisterServlets: Welcome servlet not found, root URL will show directory listing");
-		}
 	}
 
 	private void registerServlet(ServletContextEvent e, ClassLoader classLoader, String className) {
@@ -79,7 +70,7 @@ public class RegisterServlets implements ServletContextListener {
 	private void registerServletClass(ServletContextEvent e, Class<? extends AbstractServlet> cls) {
 		Class<? extends Servlet> servletClass = cls.asSubclass(Servlet.class);
 		Route route = AbstractServlet.getRouteForClass(cls);
-		System.out.println("Registering servlet " + cls.getSimpleName() + " using pattern " + route.pattern());
+		//System.out.println("Registering servlet " + cls.getSimpleName() + " using pattern " + route.pattern());
 		ServletRegistration.Dynamic reg = e.getServletContext().addServlet(cls.getSimpleName(), servletClass);
 		reg.addMapping(route.pattern());
 	}

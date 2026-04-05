@@ -152,6 +152,7 @@ tasks.register('copyTldFiles', Copy) {
 tasks.register('clean', Delete) {
 	delete rootProject.layout.buildDirectory
 	delete "logs"
+	delete "PygmyMarmosetLauncher/logs"
 }
 
 subprojects {

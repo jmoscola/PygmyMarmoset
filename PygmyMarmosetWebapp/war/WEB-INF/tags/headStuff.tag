@@ -3,6 +3,7 @@
 <%@ attribute name="ui" required="false" %>
 <%@ attribute name="syntaxhighlight" required="false" %>
 <title>Pygmy Marmoset: ${title}</title>
+<link rel="icon" type="image/x-icon" href="${pageContext.servletContext.contextPath}/favicon.ico">
 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/pygmymarmoset.css">
 <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
 <c:if test="${ui}">
