@@ -1,1 +1,0 @@
-./gradlew run 2>&1 | tee run.log

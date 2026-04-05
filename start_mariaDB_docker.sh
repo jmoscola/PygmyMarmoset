@@ -39,13 +39,7 @@ if ! colima status >/dev/null 2>&1; then
   echo "Colima is not running. Starting..."
   colima start
 else
-  # Check if it's actually running (status command can succeed but not be running)
-  if ! colima status | grep -q "Running"; then
-    echo "Colima is installed but not running. Starting..."
-    colima start
-  else
-    echo "Colima is already running."
-  fi
+  echo "Colima is already running."
 fi
 
 ########################################
