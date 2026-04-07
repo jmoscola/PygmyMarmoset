@@ -2,7 +2,7 @@ var pm = {
     dateTimeOptions: {
         enableTime: true,
         enableSeconds: true,
-        dateFormat: 'Y-m-d H:i:S',
+        dateFormat: "Y-m-d H:i:S",
         time_24hr: true,
 
         onOpen: function(selectedDates, dateStr, instance) {

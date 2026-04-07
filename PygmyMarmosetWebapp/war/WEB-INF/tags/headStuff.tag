@@ -8,6 +8,7 @@
 <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
 <c:if test="${ui}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/themes/material_orange.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
 </c:if>
 <script src="https://code.jquery.com/ui/1.14.2/jquery-ui.min.js"></script>
