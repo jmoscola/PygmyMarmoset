@@ -9,7 +9,7 @@ It is designed as a very feature-reduced version of [Marmoset](http://marmoset.c
 I had several motivations for creating Pygmy Marmoset:
 
 * *Smaller and more extensible code base*.  The Marmoset code base has a lot of the usual problems associated with being a research prototype.
-* *Ease of setup and deployment*.  Marmoset requires an application server to run.  Pygmy Marmoset is deployable as a single jar file, much the same as [CloudCoder](https://cloudcoder.org).
+* *Ease of setup and deployment*.  Marmoset requires an application server to run.  Pygmy Marmoset is deployable as a single jar file.
 * *Improved UI*.  The feature reduction comes will a significant simplification of the user interface.  Some aspects of the UI are improved: for example, [prism.js](http://prismjs.com/) is used for highlighting submitted source code.
 * *Bug fixes*.  In particular, Marmoset has issues allowing students to check their submissions: sometimes source files don't appear in the file listing for the submission.
 
@@ -21,7 +21,7 @@ Note that there are no formal releases because feature development typically hap
 
 ## Trying it out
 
-You will need JDK 17 (or higher?).
+You will need JDK 21 (or higher?).
 
 ### Part 1: Prepare a Database
 
@@ -64,10 +64,10 @@ quit;
 
 ### Part 2: Build Pygmy Marmoset and Create DB Tables
 
-**1**. Install JDK 17. **Note,** the following command assumes you're running on an **x86_64** processor.  If that's not the case, install the JDK that is appropriate for your system.
+**1**. Install JDK 21. **Note,** the following command assumes you're running on an **x86_64** processor.  If that's not the case, install the JDK that is appropriate for your system.
 
 ```bash
-sudo dnf -y install java-17-openjdk.x86_64
+sudo dnf -y install java-21-openjdk.x86_64
 ```
 
 **2**. Download the Pygmy Marmoset code or clone this git repo.
@@ -133,7 +133,7 @@ java -jar ./build/pygmyMarmosetApp.jar shutdown
 
 ### Part 4: Deploying a Production Instance
 
-**1**. On your production server, follow all the steps from `Part 1` of this guide to get MariaDB installed and configured for use with the Pygmy Marmoset web application. Of course, you will also need JDK 17 (or higher?).
+**1**. On your production server, follow all the steps from `Part 1` of this guide to get MariaDB installed and configured for use with the Pygmy Marmoset web application. Of course, you will also need JDK 21 (or higher?).
 
 **2**. As described in `Part 2` of this guide, download the source code and compile the `pygmyMarmosetApp.jar` file for the web application.  Be sure to create the `pygmymarmoset.properties` file prior to building.  The executable `pygmyMarmosetApp.jar` file is portable and can be compiled on either a development machine or your production server. After compiling, copy the executable `pygmyMarmosetApp.jar` file from the `./build` directory to an appropriate location on your production server (e.g. `/web/marmoset/webapp/`).
 

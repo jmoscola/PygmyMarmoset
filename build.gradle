@@ -119,6 +119,7 @@ tasks.register('copyLauncherDeps', Copy) {
 
 
 tasks.register('copyConfigProperties', Copy) {
+	dependsOn(':copySubprojectClasses')
 	from rootProject.projectDir
 	into "${uberJarStagingDir}/war/WEB-INF/classes"
 	include 'pygmymarmoset.properties'
