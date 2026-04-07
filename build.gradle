@@ -174,7 +174,7 @@ subprojects {
 	tasks.register('allDeps', DependencyReportTask) {}
 
 	ext {
-		jetty_version = '12.1.7'
+		jetty_version = '12.1.8'
 		asm_version = '9.9.1'
 		guava_version = '33.5.0-jre'
 		jackson_core_version = '3.1.1'
