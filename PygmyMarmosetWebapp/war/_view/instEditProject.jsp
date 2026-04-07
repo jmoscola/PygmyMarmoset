@@ -6,12 +6,7 @@
 <html>
     <head>
         <pm:headStuff title="${courseDisplayName}: Edit project ${project.name}" ui="true"/>
-        <script type="text/javascript">
-            document.addEventListener("DOMContentLoaded", function() {
-                pm.initDateTimePicker("#proj-ontime");
-                pm.initDateTimePicker("#proj-late");
-            });
-        </script>
+        <script src="${pageContext.servletContext.contextPath}/js/init_datetime_picker.js"></script>
     </head>
     <body>
         <pm:header/>

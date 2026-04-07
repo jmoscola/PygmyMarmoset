@@ -4,12 +4,12 @@ var pm = {
         enableSeconds: true,
         dateFormat: 'Y-m-d H:i:S',
         time_24hr: true,
-        defaultHour: 23,
-        defaultMinute: 59,
-        defaultSecond: 59,
+
         onOpen: function(selectedDates, dateStr, instance) {
             if (selectedDates.length === 0) {
-                instance.setDate(null, false);
+                const now = new Date();
+                now.setHours(23, 59, 59, 0);
+                instance.setDate(now, false);
             }
         }
     },

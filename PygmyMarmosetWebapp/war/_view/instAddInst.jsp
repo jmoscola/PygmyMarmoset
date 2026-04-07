@@ -6,13 +6,11 @@
 <html>
     <head>
         <pm:headStuff title="${courseDisplayName}: Add Instructor" ui="true"/>
-        <script type="text/javascript">
-            document.addEventListener("DOMContentLoaded", function() {
-                pm.autocompleteOn("#inst-username", "${pageContext.servletContext.contextPath}/i/suggestUsernames/${course.id}");
-            });
-        </script>
+        <script src="${pageContext.servletContext.contextPath}/js/inst_add_autocompleteon.js"></script>
     </head>
-    <body>
+    <body
+        data-context-path="${pageContext.servletContext.contextPath}"
+        data-course-id="${course.id}">
         <pm:header/>
         <div id="content">
             <pm:crumbs/>

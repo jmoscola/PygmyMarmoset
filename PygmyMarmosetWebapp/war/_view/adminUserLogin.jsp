@@ -5,18 +5,9 @@
 <html>
     <head>
         <pm:headStuff title="Log in as another user" ui="true"/>
-        <script type="text/javascript">
-            document.addEventListener("DOMContentLoaded", function() {
-                // Clear the field after Safari autofill has a chance to run
-                setTimeout(function() {
-                    document.getElementById("username_field").value = "";
-                    document.getElementById("username_field").focus();
-                    pm.autocompleteOn("#username_field", "${pageContext.servletContext.contextPath}/a/suggestUsernames");
-                }, 50);
-            });
-        </script>
+        <script src="${pageContext.servletContext.contextPath}/js/admin_user_autocompleteon.js"></script>
     </head>
-    <body>
+    <body data-context-path="${pageContext.servletContext.contextPath}">
         <pm:header/>
         <div id="content">
             <pm:crumbs/>

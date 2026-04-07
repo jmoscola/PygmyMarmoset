@@ -5,11 +5,7 @@
 <html>
 	<head>
 		<pm:headStuff title="Log in"/>
-		<script type="text/javascript">
-		$(document).ready(function() {
-			$("#username_field").focus();
-		});
-		</script>
+		<script src="${pageContext.servletContext.contextPath}/js/login_autofocus.js"></script>
 	</head>
 	
 	<body style="background-image: url('${pageContext.servletContext.contextPath}/img/pygmyMarmoset-lg.jpg');">
