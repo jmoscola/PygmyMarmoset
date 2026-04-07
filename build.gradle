@@ -194,7 +194,7 @@ subprojects {
 		slf4j_version = '2.0.17'
 		log4j_version = '2.25.3'
 		jakarta_servlet_version = '6.1.0'
-		jakarta_servlet_jsp_api = '3.1.1'
+		jakarta_servlet_jsp_api = '4.0.0'
 		jakarta_annotation_api_version = '3.0.0'
 		jakarta_servlet_jsp_jstl_api = '3.0.0'
 		jakarta_servlet_jsp_jstl = '3.0.1'
