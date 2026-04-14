@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 import org.slf4j.Logger;
@@ -49,7 +49,7 @@ public class PMConfig {
 			logger.warn("Resource {} doesn't exist", resName);
 			return false;
 		} else {
-			InputStreamReader reader = new InputStreamReader(in, Charset.forName("UTF-8"));
+			InputStreamReader reader = new InputStreamReader(in, StandardCharsets.UTF_8);
 			try {
 				instance.load(reader);
 				return true;
@@ -69,7 +69,7 @@ public class PMConfig {
 		return instance;
 	}
 	
-	private Properties properties;
+	private final Properties properties;
 	
 	private PMConfig() {
 		properties = new Properties();

@@ -8,7 +8,7 @@
 		<script src="${pageContext.servletContext.contextPath}/js/login_autofocus.js"></script>
 	</head>
 	
-	<body style="background-image: url('${pageContext.servletContext.contextPath}/img/pygmyMarmoset-lg.jpg');">
+	<body id="login-page">
 		<div id="loginbox">
 			<h1>Welcome to Pygmy Marmoset!</h1>
 			<p>Please enter your username and password:</p>
